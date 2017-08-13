@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+     Copyright 2017 Gunnar Morling (http://www.gunnarmorling.de/)
+     and/or other contributors as indicated by the @authors tag. See the
+     copyright.txt file in the distribution for a full listing of all
+     contributors.
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+         http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>de.gunnarmorling.jdkapidiff</groupId>
+	<artifactId>jdkapidiff</artifactId>
+	<version>1.0-SNAPSHOT</version>
+	<packaging>jar</packaging>
+
+	<name>jdkapidiff</name>
+	<url>http://gunnarmorling.de/</url>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>com.mycila</groupId>
+					<artifactId>license-maven-plugin</artifactId>
+					<version>3.0</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<configuration>
+						<source>9</source>
+						<target>9</target>
+					</configuration>
+					<version>3.6.2</version>
+				</plugin>
+				<plugin>
+					<groupId>org.codehaus.gmaven</groupId>
+					<artifactId>groovy-maven-plugin</artifactId>
+					<version>2.0</version>
+					<dependencies>
+						<dependency>
+							<groupId>org.codehaus.groovy</groupId>
+							<artifactId>groovy-all</artifactId>
+							<version>2.4.12</version>
+						</dependency>
+					</dependencies>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.gmaven</groupId>
+				<artifactId>groovy-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<phase>generate-resources</phase>
+						<goals>
+							<goal>execute</goal>
+						</goals>
+						<configuration>
+							<source>
+								project.properties.java8home = new java.io.File( session.lookup( 'org.apache.maven.toolchain.ToolchainManager' ).getToolchains( session, 'jdk', [version:'1.8'] ).get( 0 ).findTool( 'javac' ) ).getParentFile().getParentFile().toString()
+								project.properties.java9home = new java.io.File( session.lookup( 'org.apache.maven.toolchain.ToolchainManager' ).getToolchains( session, 'jdk', [version:'9'] ).get( 0 ).findTool( 'javac' ) ).getParentFile().getParentFile().toString()
+							</source>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<version>1.6.0</version>
+				<executions>
+					<execution>
+						<phase>verify</phase>
+						<goals>
+							<goal>java</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<executable>java</executable>
+					<arguments>
+						<argument>--add-modules</argument>
+						<argument>jdk.jlink</argument>
+						<argument>--module</argument> <!-- or -m -->
+						<argument>de.gunnarmorling.jdkapidiff/de.gunnarmorling.jdkapidiff.ModuleRepackager</argument>
+						<argument>--java8home</argument>
+						<argument>${java8home}</argument>
+						<argument>--java9home</argument>
+						<argument>${java9home}</argument>
+						<argument>--working-dir</argument>
+						<argument>${project.build.directory}</argument>
+					</arguments>
+					
+					<mainClass>de.gunnarmorling.jdkapidiff.ModuleRepackager</mainClass>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>com.github.siom79.japicmp</groupId>
+				<artifactId>japicmp-maven-plugin</artifactId>
+				<version>0.10.0</version>
+				<configuration>
+					<oldVersion>
+						<file>
+							<path>${project.build.directory}/java8-api.jar</path>
+						</file>
+					</oldVersion>
+					<newVersion>
+						<file>
+							<path>${project.build.directory}/java9-api.jar</path>
+						</file>
+					</newVersion>
+					<parameter>
+						<noAnnotations>true</noAnnotations>
+						<onlyModified>true</onlyModified>
+						<ignoreMissingClasses>true</ignoreMissingClasses>
+						<excludes>
+							<exclude>apple</exclude>
+							<exclude>com.apple</exclude>
+							<exclude>com.oracle</exclude>
+							<exclude>com.sun</exclude>
+							<exclude>jdk.internal</exclude>
+							<exclude>jdk.dynalink.internal</exclude>
+							<exclude>jdk.incubator.http.internal</exclude>
+							<exclude>jdk.javadoc.internal</exclude>
+							<exclude>jdk.jfr.internal</exclude>
+							<exclude>jdk.management.resource.internal</exclude>
+							<exclude>jdk.nashorn.internal</exclude>
+							<exclude>jdk.packager.internal</exclude>
+							<exclude>jdk.tools.jlink.internal</exclude>
+							<exclude>jdk.xml.internal</exclude>
+							<exclude>oracle</exclude>
+							<exclude>sun</exclude>
+						</excludes>
+						<skipXmlReport>true</skipXmlReport>
+						<skipDiffReport>true</skipDiffReport>
+					</parameter>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>verify</phase>
+						<goals>
+							<goal>cmp</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.beust</groupId>
+			<artifactId>jcommander</artifactId>
+			<version>1.72</version>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+</project>
