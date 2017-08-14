@@ -4,7 +4,7 @@ This project creates a report of all API changes between Java 8 and 9, using [Ja
 
 ## Published report
 
-A report created by this generator (based on Java 9 b181) can be found at https://gunnarmorling.github.io/jdkapidiff/jdk8-jdk9-api-diff.html.
+A report created by this generator (based on Java 9 b181) can be found at https://gunnarmorling.github.io/jdkapidiff/jdk8-jdk9-api-diff.html (16 MB, so loading may take a bit).
 
 ## Usage
 
