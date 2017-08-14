@@ -1,10 +1,15 @@
 # Java 8 - 9 API Diff Report Generator
 
-This project creates a report of all API changes between Java 8 and 9, using JapiCmp.
+This project creates a report of all API changes between Java 8 and 9, using [JapiCmp](https://github.com/siom79/japicmp).
+
+## Published report
+
+A report created by this generator can be found at https://gunnarmorling.github.io/jdkapidiff/jdk8-jdk9-api-diff.html.
 
 ## Usage
 
-Run `mvn clean install`. The API change report can be found at _target/japicmp/japicmp.html_.
+To create the report yourself, e.g. with different settings, run `mvn clean install`.
+The API change report can be found at _target/japicmp/japicmp.html_.
 Adapt the excludes in the execution of the japicmp-maven-plugin as needed.
 
 Maven Toolchains are used to locate the different JDKs.
