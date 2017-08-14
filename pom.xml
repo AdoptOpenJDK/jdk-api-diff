@@ -77,10 +77,7 @@
 							<goal>execute</goal>
 						</goals>
 						<configuration>
-							<source>
-								project.properties.java8home = new java.io.File( session.lookup( 'org.apache.maven.toolchain.ToolchainManager' ).getToolchains( session, 'jdk', [version:'1.8'] ).get( 0 ).findTool( 'javac' ) ).getParentFile().getParentFile().toString()
-								project.properties.java9home = new java.io.File( session.lookup( 'org.apache.maven.toolchain.ToolchainManager' ).getToolchains( session, 'jdk', [version:'9'] ).get( 0 ).findTool( 'javac' ) ).getParentFile().getParentFile().toString()
-							</source>
+							<source>${project.basedir}/src/main/groovy/exportJdkHomes.groovy</source>
 						</configuration>
 					</execution>
 				</executions>
