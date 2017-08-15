@@ -12,8 +12,8 @@ To create the report yourself, e.g. with different settings, run `mvn clean inst
 The API change report can be found at _target/japicmp/japicmp.html_.
 Adapt the excludes in the execution of the japicmp-maven-plugin as needed.
 
-Maven Toolchains are used to locate the different JDKs.
-There must be a toolchain for Java 1.8 and one for Java 9.
+[Maven Toolchains](https://maven.apache.org/guides/mini/guide-using-toolchains.html) are used to locate the different JDKs.
+There must be a toolchain of type `jdk` for Java 1.8 and one for Java 9.
 Provide a file _~.m2/toolchains.xml_ like this:
 
     <?xml version="1.0" encoding="UTF8"?>
