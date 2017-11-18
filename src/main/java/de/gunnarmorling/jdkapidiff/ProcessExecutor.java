@@ -32,7 +32,7 @@ import java.util.List;
  */
 public class ProcessExecutor {
 
-    public static void run(String name, List<String> command, Path workingDirectory) {
+    public static List<String> run(String name, List<String> command, Path workingDirectory) {
         ProcessBuilder builder = new ProcessBuilder( command ).directory( workingDirectory.toFile() );
 
         Process process;
@@ -63,8 +63,6 @@ public class ProcessExecutor {
             throw new RuntimeException( "Execution of " + name + " failed" );
         }
 
-        if ( !outputLines.isEmpty() ) {
-            System.out.println( outputLines );
-        }
+        return outputLines;
     }
 }

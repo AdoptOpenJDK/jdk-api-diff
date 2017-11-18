@@ -70,7 +70,8 @@ public class ModuleRepackager {
     }
 
     private static void mergeJava8Api(Path workingDir, Path java8Home, Path extractedClassesDir, List<String> java8Excludes) throws IOException {
-        System.out.println( "Merging Java 8 Jars" );
+        String version = getVersion( java8Home );
+        System.out.println( "Merging Java 8 Jars from " + java8Home + " (version " + version + ")" );
 
         Path java8Dir = extractedClassesDir.resolve( "java8" );
 
@@ -124,7 +125,8 @@ public class ModuleRepackager {
     }
 
     private static void mergeJava9Api(Path java9Home, Path extractedClassesDir) throws IOException {
-        System.out.println( "Merging Java 9 modules" );
+        String version = getVersion( java9Home );
+        System.out.println( "Merging Java 9 modules from " + java9Home + " (version " + version + ")" );
 
         Path java9Dir = extractedClassesDir.resolve( "java9" );
 
@@ -212,5 +214,11 @@ public class ModuleRepackager {
         }
 
         return fileList.toString();
+    }
+
+    private static String getVersion(Path javaHome) {
+        List<String> output = ProcessExecutor.run( "java", Arrays.asList( javaHome.resolve( "bin" ).resolve( "java" ).toString(), "-version" ), javaHome.resolve( "bin" ) );
+        String version = output.get( 0 );
+        return version.substring( version.indexOf( "\"") + 1, version.length() - 1);
     }
 }
