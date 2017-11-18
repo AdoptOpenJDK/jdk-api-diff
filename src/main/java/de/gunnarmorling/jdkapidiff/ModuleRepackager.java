@@ -98,10 +98,10 @@ public class ModuleRepackager {
         System.out.println( "Extracting nashorn.jar" );
         ProcessExecutor.run( "jar", Arrays.asList( "jar", "-xf", nashornJar.toString() ), java8Dir );
 
-//        Path jceJar = java8Home.resolve( "jre" ).resolve( "lib" ).resolve( "jce.jar" );
-//        System.out.println( "Extracting jce.jar" );
-//        ProcessExecutor.run( "jar", Arrays.asList( "jar", "-xf", jceJar.toString() ), java8Dir );
-//
+        Path jceJar = java8Home.resolve( "jre" ).resolve( "lib" ).resolve( "jce.jar" );
+        System.out.println( "Extracting jce.jar" );
+        ProcessExecutor.run( "jar", Arrays.asList( "jar", "-xf", jceJar.toString() ), java8Dir );
+
 //        Path jfrJar = java8Home.resolve( "jre" ).resolve( "lib" ).resolve( "jfr.jar" );
 //        System.out.println( "Extracting jfr.jar" );
 //        ProcessExecutor.run( "jar", Arrays.asList( "jar", "-xf", jfrJar.toString() ), java8Dir );
