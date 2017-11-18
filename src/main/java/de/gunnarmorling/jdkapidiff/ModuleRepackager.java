@@ -102,9 +102,9 @@ public class ModuleRepackager {
         System.out.println( "Extracting jce.jar" );
         ProcessExecutor.run( "jar", Arrays.asList( "jar", "-xf", jceJar.toString() ), java8Dir );
 
-//        Path jfrJar = java8Home.resolve( "jre" ).resolve( "lib" ).resolve( "jfr.jar" );
-//        System.out.println( "Extracting jfr.jar" );
-//        ProcessExecutor.run( "jar", Arrays.asList( "jar", "-xf", jfrJar.toString() ), java8Dir );
+        Path jfrJar = java8Home.resolve( "jre" ).resolve( "lib" ).resolve( "jfr.jar" );
+        System.out.println( "Extracting jfr.jar" );
+        ProcessExecutor.run( "jar", Arrays.asList( "jar", "-xf", jfrJar.toString() ), java8Dir );
 
         Path java8files = Paths.get( workingDir.toUri() ).resolve( "java8files" );
 
