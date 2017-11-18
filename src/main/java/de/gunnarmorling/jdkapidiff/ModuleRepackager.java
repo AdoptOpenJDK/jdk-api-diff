@@ -20,12 +20,17 @@ package de.gunnarmorling.jdkapidiff;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.FileVisitResult;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.nio.file.SimpleFileVisitor;
+import java.nio.file.StandardOpenOption;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 import java.util.Optional;
 import java.util.spi.ToolProvider;
 
@@ -38,6 +43,9 @@ public class ModuleRepackager {
 
         @Parameter(names="--java8home")
         private File java8home;
+
+        @Parameter(names="--java8excludes")
+        private List<String> java8Excludes;
 
         @Parameter(names="--java9home")
         private File java9home;
@@ -57,11 +65,11 @@ public class ModuleRepackager {
         Path extractedClassesDir = args.workingDir.toPath().resolve( "extracted-classes" );
         delete( extractedClassesDir );
 
-        mergeJava8Api( args.java8home.toPath(), extractedClassesDir );
+        mergeJava8Api( args.workingDir.toPath(), args.java8home.toPath(), extractedClassesDir, args.java8Excludes != null ? args.java8Excludes : Collections.emptyList() );
         mergeJava9Api( args.java9home.toPath(), extractedClassesDir );
     }
 
-    private static void mergeJava8Api(Path java8Home, Path extractedClassesDir) throws IOException {
+    private static void mergeJava8Api(Path workingDir, Path java8Home, Path extractedClassesDir, List<String> java8Excludes) throws IOException {
         System.out.println( "Merging Java 8 Jars" );
 
         Path java8Dir = extractedClassesDir.resolve( "java8" );
@@ -98,14 +106,20 @@ public class ModuleRepackager {
 //        System.out.println( "Extracting jfr.jar" );
 //        ProcessExecutor.run( "jar", Arrays.asList( "jar", "-xf", jfrJar.toString() ), java8Dir );
 
+        Path java8files = Paths.get( workingDir.toUri() ).resolve( "java8files" );
+
+        Files.write(
+                java8files,
+                getJava8FileList( java8Dir, java8Excludes ).getBytes(StandardCharsets.UTF_8), StandardOpenOption.CREATE
+        );
+
         System.out.println( "Creating java8-api.jar" );
 
         jar.get().run(
                 System.out,
                 System.err,
                 "-cf", extractedClassesDir.getParent().resolve( "java8-api.jar" ).toString(),
-                "-C", java8Dir.toString(),
-                "."
+                "@" + java8files
         );
     }
 
@@ -170,5 +184,33 @@ public class ModuleRepackager {
         }
 
         return dir;
+    }
+
+    private static String getJava8FileList(Path java8Dir, List<String> excludes) {
+        StringBuilder fileList = new StringBuilder();
+
+        try {
+            Files.walkFileTree( java8Dir, new SimpleFileVisitor<Path>() {
+                @Override
+                public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
+                    java8Dir.relativize( file );
+
+                    for ( String exclude : excludes ) {
+                        if ( file.startsWith( exclude ) ) {
+                            return FileVisitResult.CONTINUE;
+                        }
+                    }
+
+                    fileList.append( file ).append( System.lineSeparator() );
+
+                    return FileVisitResult.CONTINUE;
+                }
+            });
+        }
+        catch (IOException e) {
+            throw new RuntimeException( e );
+        }
+
+        return fileList.toString();
     }
 }
