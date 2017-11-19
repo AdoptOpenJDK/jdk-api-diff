@@ -24,3 +24,8 @@ if ( jdk9Home != null ) {
 else {
 	throw new IllegalArgumentException( "No toolchain found for JDK 9" )
 }
+
+jdk10Home = getJdkHome('10')
+if ( jdk10Home != null ) {
+	project.properties.java10home = jdk10Home
+}
