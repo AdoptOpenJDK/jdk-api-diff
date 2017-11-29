@@ -25,8 +25,8 @@ import de.gunnarmorling.jdkapidiff.ProcessExecutor;
 
 public class Jdk8Repackager extends JdkRepackager {
 
-    public Jdk8Repackager(Path javaHome, String version) {
-        super( javaHome, version );
+    public Jdk8Repackager(Path javaHome, String version, Path workingDir) {
+        super( javaHome, version, workingDir );
     }
 
     @Override

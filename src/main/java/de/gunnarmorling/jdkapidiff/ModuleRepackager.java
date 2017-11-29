@@ -20,18 +20,32 @@ package de.gunnarmorling.jdkapidiff;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.nio.file.FileVisitResult;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.SimpleFileVisitor;
+import java.nio.file.StandardCopyOption;
 import java.nio.file.attribute.BasicFileAttributes;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Stream;
 
 import com.beust.jcommander.JCommander;
 import com.beust.jcommander.Parameter;
 
 import de.gunnarmorling.jdkapidiff.repackager.JdkRepackager;
+import japicmp.cmp.JApiCmpArchive;
+import japicmp.cmp.JarArchiveComparator;
+import japicmp.cmp.JarArchiveComparatorOptions;
+import japicmp.config.Options;
+import japicmp.model.JApiClass;
+import japicmp.output.semver.SemverOut;
+import japicmp.output.xml.XmlOutput;
+import japicmp.output.xml.XmlOutputGenerator;
+import japicmp.output.xml.XmlOutputGeneratorOptions;
+import japicmp.util.Optional;
 
 public class ModuleRepackager {
 
@@ -64,11 +78,95 @@ public class ModuleRepackager {
         Path extractedClassesDir = args.workingDir.toPath().resolve( "extracted-classes" );
         delete( extractedClassesDir );
 
-        JdkRepackager repackager = JdkRepackager.getJdkRepackager( args.javaHome1.toPath() );
-        repackager.mergeJavaApi( args.workingDir.toPath(), extractedClassesDir, args.excludes1 != null ? args.excludes1 : Collections.emptyList() );
+        JdkRepackager repackagerOld = JdkRepackager.getJdkRepackager( args.javaHome1.toPath(), args.workingDir.toPath() );
+        repackagerOld.mergeJavaApi( extractedClassesDir, args.excludes1 != null ? args.excludes1 : Collections.emptyList() );
 
-        repackager = JdkRepackager.getJdkRepackager( args.javaHome2.toPath() );
-        repackager.mergeJavaApi( args.workingDir.toPath(), extractedClassesDir, args.excludes2 != null ? args.excludes2 : Collections.emptyList() );
+        JdkRepackager repackagerNew = JdkRepackager.getJdkRepackager( args.javaHome2.toPath(), args.workingDir.toPath() );
+        repackagerNew.mergeJavaApi( extractedClassesDir, args.excludes2 != null ? args.excludes2 : Collections.emptyList() );
+
+        generateDiffReport(args, repackagerOld, repackagerNew);
+    }
+
+    private static void generateDiffReport(Args args, JdkRepackager oldJdk, JdkRepackager newJdk) throws IOException {
+        Path outputFile = args.workingDir.toPath().resolve( "jdk-api-diff.html" );
+
+        Options options = Options.newDefault();
+        options.setNoAnnotations( true );
+        options.setIgnoreMissingClasses( true );
+        options.setOutputOnlyModifications( true );
+        options.setOldArchives( Arrays.asList( new JApiCmpArchive( oldJdk.getMergedJarPath().toFile(), oldJdk.getVersion() ) ) );
+        options.setNewArchives( Arrays.asList( new JApiCmpArchive( newJdk.getMergedJarPath().toFile(), newJdk.getVersion() ) ) );
+        options.addExcludeFromArgument( Optional.of( "apple" ), false );
+        options.addExcludeFromArgument( Optional.of( "com.apple" ), false );
+        options.addExcludeFromArgument( Optional.of( "com.oracle" ), false );
+        options.addExcludeFromArgument( Optional.of( "com.sun" ), false );
+        options.addExcludeFromArgument( Optional.of( "jdk.internal" ), false );
+        options.addExcludeFromArgument( Optional.of( "jdk.dynalink.internal" ), false );
+        options.addExcludeFromArgument( Optional.of( "jdk.incubator.http.internal" ), false );
+        options.addExcludeFromArgument( Optional.of( "jdk.javadoc.internal" ), false );
+        options.addExcludeFromArgument( Optional.of( "jdk.jfr.internal" ), false );
+        options.addExcludeFromArgument( Optional.of( "jdk.management.resource.internal" ), false );
+        options.addExcludeFromArgument( Optional.of( "jdk.nashorn.internal" ), false );
+        options.addExcludeFromArgument( Optional.of( "jdk.packager.internal" ), false );
+        options.addExcludeFromArgument( Optional.of( "jdk.tools.jlink.internal" ), false );
+        options.addExcludeFromArgument( Optional.of( "jdk.xml.internal" ), false );
+        options.addExcludeFromArgument( Optional.of( "oracle" ), false );
+        options.addExcludeFromArgument( Optional.of( "sun" ), false );
+        options.addExcludeFromArgument( Optional.of( "jdk.management.cmm" ), false );
+        options.addExcludeFromArgument( Optional.of( "jdk.management.jfr" ), false );
+        options.addExcludeFromArgument( Optional.of( "jdk.management.resource" ), false );
+        options.setHtmlOutputFile( Optional.of( outputFile.toString() ) );
+
+        List<JApiClass> jApiClasses = generateDiff(oldJdk, newJdk, options);
+        createHtmlReport( oldJdk, newJdk, options, jApiClasses );
+        cleanupOutput( outputFile, oldJdk, newJdk );
+    }
+
+    private static List<JApiClass> generateDiff(JdkRepackager oldJdk, JdkRepackager newJdk, Options options) {
+        System.out.println( "Generating API diff" );
+
+        JarArchiveComparatorOptions comparatorOptions = JarArchiveComparatorOptions.of( options );
+        JarArchiveComparator jarArchiveComparator = new JarArchiveComparator( comparatorOptions );
+        List<JApiClass> jApiClasses = jarArchiveComparator.compare(
+                new JApiCmpArchive( oldJdk.getMergedJarPath().toFile(), oldJdk.getVersion() ),
+                new JApiCmpArchive( newJdk.getMergedJarPath().toFile(), newJdk.getVersion() )
+        );
+        return jApiClasses;
+    }
+
+    private static void createHtmlReport(JdkRepackager oldJdk, JdkRepackager newJdk, Options options,
+            List<JApiClass> jApiClasses) {
+        System.out.println( "Creating HTML report" );
+
+        SemverOut semverOut = new SemverOut( options, jApiClasses );
+        XmlOutputGeneratorOptions xmlOutputGeneratorOptions = new XmlOutputGeneratorOptions();
+        xmlOutputGeneratorOptions.setCreateSchemaFile( true );
+        xmlOutputGeneratorOptions.setSemanticVersioningInformation( semverOut.generate() );
+        xmlOutputGeneratorOptions.setTitle( "JDK " + oldJdk.getVersion() + " to " + newJdk.getVersion() + " API Change Report" );
+
+        XmlOutputGenerator xmlGenerator = new XmlOutputGenerator( jApiClasses, options, xmlOutputGeneratorOptions );
+        XmlOutput output = xmlGenerator.generate();
+        XmlOutputGenerator.writeToFiles( options, output );
+    }
+
+    private static void cleanupOutput(Path outputFile, JdkRepackager oldJdk, JdkRepackager newJdk) throws IOException {
+        Path outputFileTrimmed = outputFile.getParent().resolve( outputFile.getFileName() + ".new" );
+
+        PrintWriter writer = new PrintWriter( outputFileTrimmed.toFile(), "UTF-8" );
+
+        try ( Stream<String> stream = Files.lines( outputFile ) ) {
+            stream.forEach( l -> {
+                writer.write( l.replaceAll( "\\s+$", "" )
+                        .replaceAll( oldJdk.getMergedJarPath().toString(), "JDK " + oldJdk.getVersion() )
+                        .replaceAll( newJdk.getMergedJarPath().toString(), "JDK " + newJdk.getVersion() ) +
+                        System.lineSeparator()
+                );
+            } );
+        }
+
+        writer.close();
+
+        Files.move( outputFileTrimmed, outputFile, StandardCopyOption.REPLACE_EXISTING );
     }
 
     private static Path delete(Path dir) {

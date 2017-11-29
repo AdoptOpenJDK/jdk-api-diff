@@ -38,24 +38,26 @@ public abstract class JdkRepackager {
 
     protected final Path javaHome;
     protected final String version;
+    private final Path workingDir;
 
-    public static JdkRepackager getJdkRepackager(Path javaHome) {
+    public static JdkRepackager getJdkRepackager(Path javaHome, Path workingDir) {
         String version = getVersion( javaHome );
 
         if ( version.startsWith( "1.") ) {
-            return new Jdk8Repackager( javaHome, version );
+            return new Jdk8Repackager( javaHome, version, workingDir );
         }
         else {
-            return new Jdk9Repackager( javaHome, version );
+            return new Jdk9Repackager( javaHome, version, workingDir );
         }
     }
 
-    protected JdkRepackager(Path javaHome, String version) {
+    protected JdkRepackager(Path javaHome, String version, Path workingDir) {
         this.javaHome = javaHome;
         this.version = version;
+        this.workingDir = workingDir;
     }
 
-    public void mergeJavaApi(Path workingDir, Path extractedClassesDir, List<String> excludes) throws IOException {
+    public void mergeJavaApi(Path extractedClassesDir, List<String> excludes) throws IOException {
         System.out.println( "Merging JARs/modules from " + javaHome + " (version " + version + ")" );
 
         Path targetDir = extractedClassesDir.resolve( version );
@@ -70,8 +72,7 @@ public abstract class JdkRepackager {
                 getFileList( targetDir, excludes ).getBytes(StandardCharsets.UTF_8), StandardOpenOption.CREATE
         );
 
-        String apiJarName = "java-" + version + "-api.jar";
-        System.out.println( "Creating " + apiJarName );
+        System.out.println( "Creating " + getMergedJarPath() );
 
         Optional<ToolProvider> jar = ToolProvider.findFirst( "jar" );
         if ( !jar.isPresent() ) {
@@ -81,9 +82,18 @@ public abstract class JdkRepackager {
         jar.get().run(
                 System.out,
                 System.err,
-                "-cf", extractedClassesDir.getParent().resolve( apiJarName ).toString(),
+                "-cf", getMergedJarPath().toString(),
                 "@" + fileList
         );
+    }
+
+    public Path getMergedJarPath() {
+        String apiJarName = "java-" + version + "-api.jar";
+        return workingDir.resolve( apiJarName );
+    }
+
+    public String getVersion() {
+        return version;
     }
 
     protected abstract void extractJdkClasses(Path targetDir) throws IOException;

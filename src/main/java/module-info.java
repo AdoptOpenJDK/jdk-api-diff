@@ -19,4 +19,5 @@
 module de.gunnarmorling.jdkapidiff {
     requires jcommander;
     exports de.gunnarmorling.jdkapidiff;
+    opens de.gunnarmorling.jdkapidiff to jcommander;
 }

@@ -26,8 +26,8 @@ import java.util.spi.ToolProvider;
 
 class Jdk9Repackager extends JdkRepackager {
 
-    public Jdk9Repackager(Path javaHome, String version) {
-        super( javaHome, version );
+    public Jdk9Repackager(Path javaHome, String version, Path workingDir) {
+        super( javaHome, version, workingDir );
     }
 
     @Override

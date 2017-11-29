@@ -90,16 +90,20 @@
 					<execution>
 						<phase>verify</phase>
 						<goals>
-							<goal>java</goal>
+							<goal>exec</goal>
 						</goals>
 					</execution>
 				</executions>
 				<configuration>
 					<executable>java</executable>
 					<arguments>
+						<argument>-Xdebug</argument>
+						<argument>-Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=8000</argument>
 						<argument>--add-modules</argument>
-						<argument>jdk.jlink</argument>
-						<argument>--module</argument> <!-- or -m -->
+						<argument>java.xml.bind</argument>
+						<argument>--module-path</argument>
+						<modulepath/>
+						<argument>--module</argument>
 						<argument>de.gunnarmorling.jdkapidiff/de.gunnarmorling.jdkapidiff.ModuleRepackager</argument>
 						<argument>--javaHome1</argument>
 						<argument>${java9home}</argument>
@@ -108,69 +112,17 @@
 						<argument>--working-dir</argument>
 						<argument>${project.build.directory}</argument>
 					</arguments>
-					
-					<mainClass>de.gunnarmorling.jdkapidiff.ModuleRepackager</mainClass>
 				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>com.github.siom79.japicmp</groupId>
-				<artifactId>japicmp-maven-plugin</artifactId>
-				<version>0.11.0</version>
-				<configuration>
-					<oldVersion>
-						<file>
-							<path>${project.build.directory}/java-9.0.1-api.jar</path>
-						</file>
-					</oldVersion>
-					<newVersion>
-						<file>
-							<path>${project.build.directory}/java-10-ea-api.jar</path>
-						</file>
-					</newVersion>
-					<parameter>
-						<noAnnotations>true</noAnnotations>
-						<onlyModified>true</onlyModified>
-						<ignoreMissingClasses>true</ignoreMissingClasses>
-						<excludes>
-							<exclude>apple</exclude>
-							<exclude>com.apple</exclude>
-							<exclude>com.oracle</exclude>
-							<exclude>com.sun</exclude>
-							<exclude>jdk.internal</exclude>
-							<exclude>jdk.dynalink.internal</exclude>
-							<exclude>jdk.incubator.http.internal</exclude>
-							<exclude>jdk.javadoc.internal</exclude>
-							<exclude>jdk.jfr.internal</exclude>
-							<exclude>jdk.management.resource.internal</exclude>
-							<exclude>jdk.nashorn.internal</exclude>
-							<exclude>jdk.packager.internal</exclude>
-							<exclude>jdk.tools.jlink.internal</exclude>
-							<exclude>jdk.xml.internal</exclude>
-							<exclude>oracle</exclude>
-							<exclude>sun</exclude>
-
-							<!-- Excluding commercial modules not part of EA builds -->
-							<exclude>jdk.management.cmm</exclude>
-							<exclude>jdk.management.jfr</exclude>
-							<exclude>jdk.management.resource</exclude>
-						</excludes>
-						<skipXmlReport>true</skipXmlReport>
-						<skipDiffReport>true</skipDiffReport>
-					</parameter>
-				</configuration>
-				<executions>
-					<execution>
-						<phase>verify</phase>
-						<goals>
-							<goal>cmp</goal>
-						</goals>
-					</execution>
-				</executions>
 			</plugin>
 		</plugins>
 	</build>
 
 	<dependencies>
+		<dependency>
+			<groupId>com.github.siom79.japicmp</groupId>
+			<artifactId>japicmp</artifactId>
+			<version>0.11.0</version>
+		</dependency>
 		<dependency>
 			<groupId>com.beust</groupId>
 			<artifactId>jcommander</artifactId>
