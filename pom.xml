@@ -111,6 +111,8 @@
 						<argument>${java10home}</argument>
 						<argument>--working-dir</argument>
 						<argument>${project.build.directory}</argument>
+						<argument>--exported-packages-only</argument>
+						<argument>true</argument>
 					</arguments>
 				</configuration>
 			</plugin>

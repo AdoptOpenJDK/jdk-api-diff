@@ -20,6 +20,8 @@ package de.gunnarmorling.jdkapidiff.repackager;
 
 import java.nio.file.Path;
 import java.util.Arrays;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 import de.gunnarmorling.jdkapidiff.ProcessExecutor;
 
@@ -30,7 +32,7 @@ public class Jdk8Repackager extends JdkRepackager {
     }
 
     @Override
-    public void extractJdkClasses(Path targetDir) {
+    public SortedSet<String> extractJdkClasses(Path targetDir) {
         // Using separate process for using specific target directory
         Path rtJar = javaHome.resolve( "jre" ).resolve( "lib" ).resolve( "rt.jar" );
         System.out.println( "Extracting rt.jar" );
@@ -55,5 +57,12 @@ public class Jdk8Repackager extends JdkRepackager {
         Path jfrJar = javaHome.resolve( "jre" ).resolve( "lib" ).resolve( "jfr.jar" );
         System.out.println( "Extracting jfr.jar" );
         ProcessExecutor.run( "jar", Arrays.asList( "jar", "-xf", jfrJar.toString() ), targetDir );
+
+        return new TreeSet<>();
+    }
+
+    @Override
+    public boolean supportsExports() {
+        return false;
     }
 }

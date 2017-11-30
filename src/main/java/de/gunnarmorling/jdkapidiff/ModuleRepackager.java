@@ -30,6 +30,7 @@ import java.nio.file.attribute.BasicFileAttributes;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Stream;
 
 import com.beust.jcommander.JCommander;
@@ -65,6 +66,13 @@ public class ModuleRepackager {
 
         @Parameter(names="--working-dir")
         private File workingDir;
+
+        @Parameter(names="--exported-packages-only",
+                description=
+                    "Whether only exported packages should be considered or not. Only supported if" +
+                    "the two JDK versions to be compared are Java 9 or later."
+        )
+        private boolean exportedPackagesOnly;
     }
 
     public static void main(String[] argv) throws Exception {
@@ -79,15 +87,17 @@ public class ModuleRepackager {
         delete( extractedClassesDir );
 
         JdkRepackager repackagerOld = JdkRepackager.getJdkRepackager( args.javaHome1.toPath(), args.workingDir.toPath() );
-        repackagerOld.mergeJavaApi( extractedClassesDir, args.excludes1 != null ? args.excludes1 : Collections.emptyList() );
+        Set<String> exported = repackagerOld.mergeJavaApi( extractedClassesDir, args.excludes1 != null ? args.excludes1 : Collections.emptyList() );
 
         JdkRepackager repackagerNew = JdkRepackager.getJdkRepackager( args.javaHome2.toPath(), args.workingDir.toPath() );
-        repackagerNew.mergeJavaApi( extractedClassesDir, args.excludes2 != null ? args.excludes2 : Collections.emptyList() );
+        exported.addAll( repackagerNew.mergeJavaApi( extractedClassesDir, args.excludes2 != null ? args.excludes2 : Collections.emptyList() ) );
 
-        generateDiffReport(args, repackagerOld, repackagerNew);
+        boolean exportedPackagesOnly = args.exportedPackagesOnly && repackagerOld.supportsExports() && repackagerNew.supportsExports();
+
+        generateDiffReport( args, repackagerOld, repackagerNew, exportedPackagesOnly ? exported : null );
     }
 
-    private static void generateDiffReport(Args args, JdkRepackager oldJdk, JdkRepackager newJdk) throws IOException {
+    private static void generateDiffReport(Args args, JdkRepackager oldJdk, JdkRepackager newJdk, Set<String> includedPackages) throws IOException {
         Path outputFile = args.workingDir.toPath().resolve( "jdk-api-diff.html" );
 
         Options options = Options.newDefault();
@@ -100,21 +110,18 @@ public class ModuleRepackager {
         options.addExcludeFromArgument( Optional.of( "com.apple" ), false );
         options.addExcludeFromArgument( Optional.of( "com.oracle" ), false );
         options.addExcludeFromArgument( Optional.of( "com.sun" ), false );
-        options.addExcludeFromArgument( Optional.of( "jdk.internal" ), false );
-        options.addExcludeFromArgument( Optional.of( "jdk.dynalink.internal" ), false );
-        options.addExcludeFromArgument( Optional.of( "jdk.incubator.http.internal" ), false );
-        options.addExcludeFromArgument( Optional.of( "jdk.javadoc.internal" ), false );
-        options.addExcludeFromArgument( Optional.of( "jdk.jfr.internal" ), false );
-        options.addExcludeFromArgument( Optional.of( "jdk.management.resource.internal" ), false );
-        options.addExcludeFromArgument( Optional.of( "jdk.nashorn.internal" ), false );
-        options.addExcludeFromArgument( Optional.of( "jdk.packager.internal" ), false );
-        options.addExcludeFromArgument( Optional.of( "jdk.tools.jlink.internal" ), false );
-        options.addExcludeFromArgument( Optional.of( "jdk.xml.internal" ), false );
         options.addExcludeFromArgument( Optional.of( "oracle" ), false );
         options.addExcludeFromArgument( Optional.of( "sun" ), false );
         options.addExcludeFromArgument( Optional.of( "jdk.management.cmm" ), false );
         options.addExcludeFromArgument( Optional.of( "jdk.management.jfr" ), false );
         options.addExcludeFromArgument( Optional.of( "jdk.management.resource" ), false );
+
+        if ( includedPackages != null ) {
+            for ( String included : includedPackages ) {
+                options.addIncludeFromArgument( Optional.of( included ), true );
+            }
+        }
+
         options.setHtmlOutputFile( Optional.of( outputFile.toString() ) );
 
         List<JApiClass> jApiClasses = generateDiff(oldJdk, newJdk, options);

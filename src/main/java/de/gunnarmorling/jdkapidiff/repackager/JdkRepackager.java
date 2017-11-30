@@ -30,6 +30,7 @@ import java.nio.file.attribute.BasicFileAttributes;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import java.util.spi.ToolProvider;
 
 import de.gunnarmorling.jdkapidiff.ProcessExecutor;
@@ -57,13 +58,19 @@ public abstract class JdkRepackager {
         this.workingDir = workingDir;
     }
 
-    public void mergeJavaApi(Path extractedClassesDir, List<String> excludes) throws IOException {
+    /**
+     * Merges the represented JDK's classes into a single JAR for comparison
+     * purposes.
+     *
+     * @return The packages exported by the represented JDK
+     */
+    public Set<String> mergeJavaApi(Path extractedClassesDir, List<String> excludes) throws IOException {
         System.out.println( "Merging JARs/modules from " + javaHome + " (version " + version + ")" );
 
         Path targetDir = extractedClassesDir.resolve( version );
         Files.createDirectories( targetDir );
 
-        extractJdkClasses( targetDir );
+        Set<String> exportedPackages = extractJdkClasses( targetDir );
 
         Path fileList = Paths.get( workingDir.toUri() ).resolve( version + "-files" );
 
@@ -85,6 +92,8 @@ public abstract class JdkRepackager {
                 "-cf", getMergedJarPath().toString(),
                 "@" + fileList
         );
+
+        return exportedPackages;
     }
 
     public Path getMergedJarPath() {
@@ -96,7 +105,12 @@ public abstract class JdkRepackager {
         return version;
     }
 
-    protected abstract void extractJdkClasses(Path targetDir) throws IOException;
+    /**
+     * Whether the extracted JDK has a defined API represented by exports (JDK 9 and onwards) or not.
+     */
+    public abstract boolean supportsExports();
+
+    protected abstract Set<String> extractJdkClasses(Path targetDir) throws IOException;
 
     private static String getVersion(Path javaHome) {
         List<String> output = ProcessExecutor.run( "java", Arrays.asList( javaHome.resolve( "bin" ).resolve( "java" ).toString(), "-version" ), javaHome.resolve( "bin" ) );
