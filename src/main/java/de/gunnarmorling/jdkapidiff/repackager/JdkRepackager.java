@@ -101,7 +101,7 @@ public abstract class JdkRepackager {
     private static String getVersion(Path javaHome) {
         List<String> output = ProcessExecutor.run( "java", Arrays.asList( javaHome.resolve( "bin" ).resolve( "java" ).toString(), "-version" ), javaHome.resolve( "bin" ) );
         String version = output.get( 0 );
-        return version.substring( version.indexOf( "\"") + 1, version.length() - 1);
+        return version.substring( version.indexOf( "\"" ) + 1, version.lastIndexOf( "\"" ) );
     }
 
     private static String getFileList(Path java8Dir, List<String> excludes) {
