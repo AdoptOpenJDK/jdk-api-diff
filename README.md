@@ -8,7 +8,7 @@ Report created by this generator can be found here (excluding any unsupported Su
 
 * [comparing JDK 9.0.1 against JDK 1.8.0_151](https://gunnarmorling.github.io/jdkapidiff/jdk8-jdk9-api-diff.html)
 (it's 16 MB, so loading may take a bit)
-* [comparing JDK 10-ea (b36) against JDK 9.0.1](https://gunnarmorling.github.io/jdkapidiff/jdk9-jdk10-api-diff.html)
+* [comparing JDK 10-ea (b42) against JDK 9.0.1](https://gunnarmorling.github.io/jdkapidiff/jdk9-jdk10-api-diff.html)
 
 ## Usage
 
