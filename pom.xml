@@ -113,6 +113,8 @@
 						<argument>${project.build.directory}</argument>
 						<argument>--exported-packages-only</argument>
 						<argument>true</argument>
+						<argument>--excluded-packages</argument>
+						<argument>apple,com.apple,com.oracle,com.sun,oracle,sun,jdk.management.cmm,jdk.management.jfr,jdk.management.resource</argument>
 					</arguments>
 				</configuration>
 			</plugin>

@@ -29,6 +29,7 @@ import java.nio.file.StandardCopyOption;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Stream;
@@ -73,6 +74,9 @@ public class ModuleRepackager {
                     "the two JDK versions to be compared are Java 9 or later."
         )
         private boolean exportedPackagesOnly;
+
+        @Parameter(names="--excluded-packages")
+        private String excludedPackages;
     }
 
     public static void main(String[] argv) throws Exception {
@@ -94,10 +98,12 @@ public class ModuleRepackager {
 
         boolean exportedPackagesOnly = args.exportedPackagesOnly && repackagerOld.supportsExports() && repackagerNew.supportsExports();
 
-        generateDiffReport( args, repackagerOld, repackagerNew, exportedPackagesOnly ? exported : null );
+        Set<String> excludedPackages = args.excludedPackages != null ? new LinkedHashSet<>( Arrays.asList( args.excludedPackages.split("\\,") ) ) : null;
+
+        generateDiffReport( args, repackagerOld, repackagerNew, exportedPackagesOnly ? exported : null, excludedPackages );
     }
 
-    private static void generateDiffReport(Args args, JdkRepackager oldJdk, JdkRepackager newJdk, Set<String> includedPackages) throws IOException {
+    private static void generateDiffReport(Args args, JdkRepackager oldJdk, JdkRepackager newJdk, Set<String> includedPackages, Set<String> excludedPackages) throws IOException {
         Path outputFile = args.workingDir.toPath().resolve( "jdk-api-diff.html" );
 
         Options options = Options.newDefault();
@@ -106,15 +112,12 @@ public class ModuleRepackager {
         options.setOutputOnlyModifications( true );
         options.setOldArchives( Arrays.asList( new JApiCmpArchive( oldJdk.getMergedJarPath().toFile(), oldJdk.getVersion() ) ) );
         options.setNewArchives( Arrays.asList( new JApiCmpArchive( newJdk.getMergedJarPath().toFile(), newJdk.getVersion() ) ) );
-        options.addExcludeFromArgument( Optional.of( "apple" ), false );
-        options.addExcludeFromArgument( Optional.of( "com.apple" ), false );
-        options.addExcludeFromArgument( Optional.of( "com.oracle" ), false );
-        options.addExcludeFromArgument( Optional.of( "com.sun" ), false );
-        options.addExcludeFromArgument( Optional.of( "oracle" ), false );
-        options.addExcludeFromArgument( Optional.of( "sun" ), false );
-        options.addExcludeFromArgument( Optional.of( "jdk.management.cmm" ), false );
-        options.addExcludeFromArgument( Optional.of( "jdk.management.jfr" ), false );
-        options.addExcludeFromArgument( Optional.of( "jdk.management.resource" ), false );
+
+        if ( excludedPackages != null ) {
+            for ( String excluded : excludedPackages ) {
+                options.addExcludeFromArgument( Optional.of( excluded ), false );
+            }
+        }
 
         if ( includedPackages != null ) {
             for ( String included : includedPackages ) {
