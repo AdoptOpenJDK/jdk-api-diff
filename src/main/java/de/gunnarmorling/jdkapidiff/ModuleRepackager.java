@@ -115,6 +115,7 @@ public class ModuleRepackager {
 
         if ( excludedPackages != null ) {
             for ( String excluded : excludedPackages ) {
+                System.out.println("Excluded: " + excluded + "###");
                 options.addExcludeFromArgument( Optional.of( excluded ), false );
             }
         }
