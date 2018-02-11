@@ -1,6 +1,6 @@
 # JDK API Diff Report Generator
 
-This project creates a report of all API changes between two different JDK versions, e.g. JDK 8 and 9, [JapiCmp](https://github.com/siom79/japicmp).
+This project creates a report of all API changes between two different JDK versions, e.g. JDK 8 and 9, using [JapiCmp](https://github.com/siom79/japicmp).
 
 ## Published reports
 
