@@ -8,13 +8,12 @@ Report created by this generator can be found here (excluding any unsupported Su
 
 * [comparing JDK 9.0.1 against JDK 1.8.0_151](https://gunnarmorling.github.io/jdkapidiff/jdk8-jdk9-api-diff.html)
 (it's 16 MB, so loading may take a bit)
-* [comparing JDK 10-ea (b42) against JDK 9.0.1](https://gunnarmorling.github.io/jdkapidiff/jdk9-jdk10-api-diff.html)
+* [comparing JDK 10-ea (b42) against JDK 9.0.4](https://gunnarmorling.github.io/jdkapidiff/jdk9-jdk10-api-diff.html)
 
 ## Usage
 
 To create the report yourself, e.g. with different settings, run `mvn clean install`.
-The API change report can be found at _target/japicmp/japicmp.html_.
-Adapt the excludes in the execution of the japicmp-maven-plugin as needed.
+The API change report can be found at _target/jdk-api-diff.html_.
 
 [Maven Toolchains](https://maven.apache.org/guides/mini/guide-using-toolchains.html) are used to locate the different JDKs.
 There must be a toolchain of type `jdk` for the JDKs to compare.
@@ -46,9 +45,16 @@ Provide a file _~.m2/toolchains.xml_ like this:
 </toolchains>
 ```
 
-Adjust the names for `oldVersion` and `newVersion` configured for the `japicmp-maven-plugin` depending on the exact JDK versions you're comparing.
+The report is created via the `ModuleRepackager` class which is executed with the Maven exec plug-in.
+Adjust the following options passed to that class in _pom.xml_ as needed:
 
-If you're interested in changes in specific packages, adjust the excludes of the `japicmp-maven-plugin` as needed.
+* `--javaHome1`: one of `${java8home}`, `${java9home}` or `${java10home}`, representing the base version
+of the comparison; these variables are declared by the _exportJdkHomes.groovy_ script based on the entries in _toolchains.xml_.
+* `--javaHome2`: one of `${java8home}`, `${java9home}` or `${java10home}`, representing the target version
+of the comparison;
+* `--exported-packages-only`: `true` or `false`, depending on whether only exported packages should be compared
+or all packages; only applies if both compared versions are Java 9 or later
+* `--excluded-packages`: a comma-separated listed of package names which should be excluded from the comparison
 
 ## License
 
