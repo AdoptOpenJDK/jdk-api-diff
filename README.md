@@ -45,13 +45,20 @@ Provide a file _~.m2/toolchains.xml_ like this:
 </toolchains>
 ```
 
+Specify two properties, `jdk1` and `jdk2` in your _pom.xml_, identifying the base and target JDK version for the comparison.
+The values are comma-separated requirements matched against the `<provides>` configurations of the existing toolchain entries.
+Both properties must unambiguously identify one toolchain, for example:
+
+```xml
+<jdk1>version=9,vendor=oracle</jdk1>
+<jdk2>version=10,vendor=oracle</jdk2>
+```
+
+If there's no matching toolchain or multiple ones match the given requirements, an exception will be raised.
+
 The report is created via the `ModuleRepackager` class which is executed with the Maven exec plug-in.
 Adjust the following options passed to that class in _pom.xml_ as needed:
 
-* `--javaHome1`: one of `${java8home}`, `${java9home}` or `${java10home}`, representing the base version
-of the comparison; these variables are declared by the _exportJdkHomes.groovy_ script based on the entries in _toolchains.xml_.
-* `--javaHome2`: one of `${java8home}`, `${java9home}` or `${java10home}`, representing the target version
-of the comparison;
 * `--exported-packages-only`: `true` or `false`, depending on whether only exported packages should be compared
 or all packages; only applies if both compared versions are Java 9 or later
 * `--excluded-packages`: a comma-separated listed of package names which should be excluded from the comparison

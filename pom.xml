@@ -33,6 +33,10 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+		<!-- matched against toolchains.xml entries -->
+		<jdk1>version=9,vendor=oracle</jdk1>
+		<jdk2>version=10,vendor=oracle</jdk2>
 	</properties>
 
 	<build>
@@ -106,9 +110,9 @@
 						<argument>--module</argument>
 						<argument>de.gunnarmorling.jdkapidiff/de.gunnarmorling.jdkapidiff.ModuleRepackager</argument>
 						<argument>--javaHome1</argument>
-						<argument>${java9home}</argument>
+						<argument>${javaHome1}</argument>
 						<argument>--javaHome2</argument>
-						<argument>${java10home}</argument>
+						<argument>${javaHome2}</argument>
 						<argument>--working-dir</argument>
 						<argument>${project.build.directory}</argument>
 						<argument>--exported-packages-only</argument>
