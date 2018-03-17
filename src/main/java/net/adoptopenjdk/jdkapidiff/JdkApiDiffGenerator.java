@@ -1,7 +1,6 @@
 /**
- *  Copyright 2017 Gunnar Morling (http://www.gunnarmorling.de/)
- *  and/or other contributors as indicated by the @authors tag. See the
- *  copyright.txt file in the distribution for a full listing of all
+ *  Copyright 2017-2018 AdoptOpenJDK contributors (https://adoptopenjdk.net/);
+ *  See the copyright.txt file in the distribution for a full listing of all
  *  contributors.
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");

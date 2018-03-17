@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 
-     Copyright 2017 Gunnar Morling (http://www.gunnarmorling.de/)
-     and/or other contributors as indicated by the @authors tag. See the
-     copyright.txt file in the distribution for a full listing of all
+     Copyright 2017-2018 AdoptOpenJDK contributors (https://adoptopenjdk.net/);
+     See the copyright.txt file in the distribution for a full listing of all
      contributors.
 
      Licensed under the Apache License, Version 2.0 (the "License");
@@ -84,6 +83,25 @@
             </plugins>
         </pluginManagement>
         <plugins>
+            <plugin>
+                <groupId>com.mycila</groupId>
+                <artifactId>license-maven-plugin</artifactId>
+                <configuration>
+                    <header>${basedir}/LICENSE.txt</header>
+                    <strictCheck>true</strictCheck>
+                    <excludes>
+                        <exclude>copyright.txt</exclude>
+                        <exclude>docs/**</exclude>
+                    </excludes>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <groupId>org.codehaus.gmaven</groupId>
                 <artifactId>groovy-maven-plugin</artifactId>
