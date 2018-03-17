@@ -34,9 +34,22 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-		<!-- matched against toolchains.xml entries -->
-		<jdk1>version=9,vendor=oracle</jdk1>
-		<jdk2>version=10,vendor=oracle</jdk2>
+		<!--
+			Matched against <MAVEN_HOME>/toolchains.xml entries like this
+
+			<toolchain>
+				<type>jdk</type>
+				<provides>
+					<version>9</version>
+					<vendor>openjdk</vendor>
+				</provides>
+				<configuration>
+					<jdkHome>path/to/jdk</jdkHome>
+				</configuration>
+			</toolchain>
+		 -->
+		<jdk1>version=10,vendor=openjdk</jdk1>
+		<jdk2>version=11,vendor=openjdk</jdk2>
 	</properties>
 
 	<build>
@@ -117,8 +130,8 @@
 						<argument>${project.build.directory}</argument>
 						<argument>--exported-packages-only</argument>
 						<argument>true</argument>
-						<argument>--excluded-packages</argument>
-						<argument>apple,com.apple,com.oracle,com.sun,oracle,sun,jdk.management.cmm,jdk.management.jfr,jdk.management.resource</argument>
+<!-- 						<argument>-#-excluded-packages</argument> -->
+<!-- 						<argument>apple,com.apple,com.oracle,com.sun,oracle,sun,jdk.management.cmm,jdk.management.jfr,jdk.management.resource</argument> -->
 					</arguments>
 				</configuration>
 			</plugin>

@@ -1,22 +1,24 @@
 # JDK API Diff Report Generator
 
-This project creates a report of all API changes between two different JDK versions, e.g. JDK 8 and 9, using [JapiCmp](https://github.com/siom79/japicmp).
+This project creates a report of all API changes between two different JDK versions,
+using [JapiCmp](https://github.com/siom79/japicmp).
+You can use this tool for instance to compare OpenJDK 9 and OpenJDK 10, OpenJDK 9 and Oracle JDK 9 etc.
 
 ## Published reports
 
-Report created by this generator can be found here (excluding any unsupported Sun/Oracle/Apple modules):
+Example reports created by this generator can be found in the _docs_ directory:
 
-* [comparing JDK 9.0.1 against JDK 1.8.0_151](https://gunnarmorling.github.io/jdkapidiff/jdk8-jdk9-api-diff.html)
-(it's 16 MB, so loading may take a bit)
-* [comparing JDK 10-ea (b42) against JDK 9.0.4](https://gunnarmorling.github.io/jdkapidiff/jdk9-jdk10-api-diff.html)
+* API comparison of OpenJDK 9.0.4 and OpenJDK 10-b46: _docs/jdk9-jdk10-api-diff.html_
+* API comparison of OpenJDK 10-b46 and OpenJDK 11-b04: _docs/jdk10-jdk11-api-diff.html_
+(it's 13 MB, so loading may take a bit)
 
 ## Usage
 
-To create the report yourself, e.g. with different settings, run `mvn clean install`.
+To create reports yourself, e.g. with different settings, run `mvn clean install`.
 The API change report can be found at _target/jdk-api-diff.html_.
 
-[Maven Toolchains](https://maven.apache.org/guides/mini/guide-using-toolchains.html) are used to locate the different JDKs.
-There must be a toolchain of type `jdk` for the JDKs to compare.
+[Maven Toolchains](https://maven.apache.org/guides/mini/guide-using-toolchains.html) are used to locate the JDKs to compare.
+There must be a toolchain entry of type `jdk` for each JDK to compare.
 Provide a file _~.m2/toolchains.xml_ like this:
 
 ```xml
@@ -25,21 +27,21 @@ Provide a file _~.m2/toolchains.xml_ like this:
     <toolchain>
         <type>jdk</type>
         <provides>
-            <version>1.8</version>
-            <vendor>oracle</vendor>
+            <version>9</version>
+            <vendor>openjdk</vendor>
         </provides>
         <configuration>
-            <jdkHome>/path/to/jdk-1.8</jdkHome>
+            <jdkHome>/path/to/jdk-9</jdkHome>
         </configuration>
     </toolchain>
     <toolchain>
         <type>jdk</type>
         <provides>
-            <version>9</version>
-            <vendor>oracle</vendor>
+            <version>10</version>
+            <vendor>openjdk</vendor>
         </provides>
         <configuration>
-            <jdkHome>/path/to/jdk-9</jdkHome>
+            <jdkHome>/path/to/jdk-10</jdkHome>
         </configuration>
     </toolchain>
 </toolchains>
@@ -50,8 +52,8 @@ The values are comma-separated requirements matched against the `<provides>` con
 Both properties must unambiguously identify one toolchain, for example:
 
 ```xml
-<jdk1>version=9,vendor=oracle</jdk1>
-<jdk2>version=10,vendor=oracle</jdk2>
+<jdk1>version=9,vendor=openjdk</jdk1>
+<jdk2>version=10,vendor=openjdk</jdk2>
 ```
 
 If there's no matching toolchain or multiple ones match the given requirements, an exception will be raised.
@@ -61,7 +63,9 @@ Adjust the following options passed to that class in _pom.xml_ as needed:
 
 * `--exported-packages-only`: `true` or `false`, depending on whether only exported packages should be compared
 or all packages; only applies if both compared versions are Java 9 or later
-* `--excluded-packages`: a comma-separated listed of package names which should be excluded from the comparison
+* `--excluded-packages`: a comma-separated listed of package names which should be excluded from the comparison;
+this can be useful to exclude unsupported packages such as `com.apple` or to ignore packages missing from Oracle EA builds
+but present in final versions such as `jdk.management.jfr`
 
 ## License
 
