@@ -16,8 +16,8 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-module de.gunnarmorling.jdkapidiff {
+module net.adoptopenjdk.jdkapidiff {
     requires jcommander;
-    exports de.gunnarmorling.jdkapidiff;
-    opens de.gunnarmorling.jdkapidiff to jcommander;
+    exports net.adoptopenjdk.jdkapidiff;
+    opens net.adoptopenjdk.jdkapidiff to jcommander;
 }

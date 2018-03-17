@@ -16,7 +16,7 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package de.gunnarmorling.jdkapidiff.repackager;
+package net.adoptopenjdk.jdkapidiff.repackager;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -33,7 +33,7 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.spi.ToolProvider;
 
-import de.gunnarmorling.jdkapidiff.ProcessExecutor;
+import net.adoptopenjdk.jdkapidiff.ProcessExecutor;
 
 public abstract class JdkRepackager {
 

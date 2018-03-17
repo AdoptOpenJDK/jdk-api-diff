@@ -16,7 +16,7 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package de.gunnarmorling.jdkapidiff;
+package net.adoptopenjdk.jdkapidiff;
 
 import java.io.File;
 import java.io.IOException;
@@ -37,7 +37,6 @@ import java.util.stream.Stream;
 import com.beust.jcommander.JCommander;
 import com.beust.jcommander.Parameter;
 
-import de.gunnarmorling.jdkapidiff.repackager.JdkRepackager;
 import japicmp.cmp.JApiCmpArchive;
 import japicmp.cmp.JarArchiveComparator;
 import japicmp.cmp.JarArchiveComparatorOptions;
@@ -48,8 +47,14 @@ import japicmp.output.xml.XmlOutput;
 import japicmp.output.xml.XmlOutputGenerator;
 import japicmp.output.xml.XmlOutputGeneratorOptions;
 import japicmp.util.Optional;
+import net.adoptopenjdk.jdkapidiff.repackager.JdkRepackager;
 
-public class ModuleRepackager {
+/**
+ * Creates an API diff report of two given JDK versions using Japicmp.
+ *
+ * @author Gunnar Morling
+ */
+public class JdkApiDiffGenerator {
 
     public static class Args {
 

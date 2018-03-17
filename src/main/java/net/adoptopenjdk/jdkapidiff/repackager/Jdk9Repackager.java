@@ -16,7 +16,7 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package de.gunnarmorling.jdkapidiff.repackager;
+package net.adoptopenjdk.jdkapidiff.repackager;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;

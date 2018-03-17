@@ -121,7 +121,7 @@
                         <argument>--module-path</argument>
                         <modulepath/>
                         <argument>--module</argument>
-                        <argument>de.gunnarmorling.jdkapidiff/de.gunnarmorling.jdkapidiff.ModuleRepackager</argument>
+                        <argument>net.adoptopenjdk.jdkapidiff/net.adoptopenjdk.jdkapidiff.JdkApiDiffGenerator</argument>
                         <argument>--javaHome1</argument>
                         <argument>${javaHome1}</argument>
                         <argument>--javaHome2</argument>

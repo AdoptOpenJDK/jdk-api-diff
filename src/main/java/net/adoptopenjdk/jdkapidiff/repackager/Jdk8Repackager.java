@@ -16,14 +16,14 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package de.gunnarmorling.jdkapidiff.repackager;
+package net.adoptopenjdk.jdkapidiff.repackager;
 
 import java.nio.file.Path;
 import java.util.Arrays;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
-import de.gunnarmorling.jdkapidiff.ProcessExecutor;
+import net.adoptopenjdk.jdkapidiff.ProcessExecutor;
 
 public class Jdk8Repackager extends JdkRepackager {
 
