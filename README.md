@@ -8,8 +8,8 @@ You can use this tool for instance to compare OpenJDK 9 and OpenJDK 10, OpenJDK 
 
 Example reports created by this generator can be found in the _docs_ directory:
 
-* API comparison of OpenJDK 9.0.4 and OpenJDK 10-b46: _docs/jdk9-jdk10-api-diff.html_
-* API comparison of OpenJDK 10-b46 and OpenJDK 11-b04: _docs/jdk10-jdk11-api-diff.html_
+* API comparison of OpenJDK 9.0.4 and OpenJDK 10-b46: [jdk9-jdk10-api-diff.html](https://gunnarmorling.github.io/jdk-api-diff/jdk9-jdk10-api-diff.html)
+* API comparison of OpenJDK 10-b46 and OpenJDK 11-b04: [docs/jdk10-jdk11-api-diff.html](https://gunnarmorling.github.io/jdk-api-diff/jdk10-jdk11-api-diff.html)
 (it's 13 MB, so loading may take a bit)
 
 ## Usage
