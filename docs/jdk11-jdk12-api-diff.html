@@ -1,7 +1,7 @@
 <html>
     <head>
         <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JDK 11-ea+23 to 12-ea+3 API Change Report</title>
+        <title>JDK 11+28 to 12-ea+10 API Change Report</title>
         <style type="text/css">
 body {
     font-family: Verdana;
@@ -120,18 +120,18 @@ ul {
 </style>
     </head>
     <body>
-        <span class="title">JDK 11-ea+23 to 12-ea+3 API Change Report</span>
+        <span class="title">JDK 11+28 to 12-ea+10 API Change Report</span>
         <br>
         <div class="meta-information">
             <table>
                 <tr>
-                    <td>Old:</td><td>JDK 11-ea+23</td>
+                    <td>Old:</td><td>JDK 11+28</td>
                 </tr>
                 <tr>
-                    <td>New:</td><td>JDK 12-ea+3</td>
+                    <td>New:</td><td>JDK 12-ea+10</td>
                 </tr>
                 <tr>
-                    <td>Created:</td><td>2018-07-20T23:10:42.337+0200</td>
+                    <td>Created:</td><td>2018-09-11T21:08:28.327+0200</td>
                 </tr>
                 <tr>
                     <td>Access modifier filter:</td><td>PROTECTED</td>
@@ -182,6 +182,57 @@ ul {
                     <tr>
                         <td><span class="
 						modified
+					">MODIFIED
+				(*)
+			</span></td><td><a href="#com.sun.source.tree.BreakTree">com.sun.source.tree.BreakTree</a></td>
+                    </tr>
+                    <tr>
+                        <td><span class="
+						modified
+					">MODIFIED
+				(*)
+			</span></td><td><a href="#com.sun.source.tree.CaseTree">com.sun.source.tree.CaseTree</a></td>
+                    </tr>
+                    <tr>
+                        <td><span class="
+						new
+					">NEW</span></td><td><a href="#com.sun.source.tree.CaseTree$CaseKind">com.sun.source.tree.CaseTree$CaseKind</a></td>
+                    </tr>
+                    <tr>
+                        <td><span class="
+						new
+					">NEW</span></td><td><a href="#com.sun.source.tree.SwitchExpressionTree">com.sun.source.tree.SwitchExpressionTree</a></td>
+                    </tr>
+                    <tr>
+                        <td><span class="
+						modified
+					">MODIFIED</span></td><td><a href="#com.sun.source.tree.Tree$Kind">com.sun.source.tree.Tree$Kind</a></td>
+                    </tr>
+                    <tr>
+                        <td><span class="
+						modified
+					">MODIFIED
+				(*)
+			</span></td><td><a href="#com.sun.source.tree.TreeVisitor">com.sun.source.tree.TreeVisitor</a></td>
+                    </tr>
+                    <tr>
+                        <td><span class="
+						modified
+					">MODIFIED</span></td><td><a href="#com.sun.source.util.SimpleTreeVisitor">com.sun.source.util.SimpleTreeVisitor</a></td>
+                    </tr>
+                    <tr>
+                        <td><span class="
+						modified
+					">MODIFIED</span></td><td><a href="#com.sun.source.util.TreeScanner">com.sun.source.util.TreeScanner</a></td>
+                    </tr>
+                    <tr>
+                        <td><span class="
+						unchanged
+					">UNCHANGED</span></td><td><a href="#java.lang.management.MemoryType">java.lang.management.MemoryType</a></td>
+                    </tr>
+                    <tr>
+                        <td><span class="
+						modified
 					">MODIFIED</span></td><td><a href="#javax.lang.model.SourceVersion">javax.lang.model.SourceVersion</a></td>
                     </tr>
                 </tbody>
@@ -193,6 +244,1218 @@ ul {
 			</span>
         </div>
         <div>
+            <div>
+                <div class="class" id="com.sun.source.tree.BreakTree">
+                    <div class="class_header">
+                        <span class="label"><a name="com.sun.source.tree.BreakTree"></a><span class="
+						modified
+					">MODIFIED
+				(*)
+			</span><span class="
+					">
+					&nbsp;
+				</span><span class="
+							unchanged modifier
+						"></span><span class="
+							unchanged modifier
+						"></span><span class="
+							unchanged modifier
+						">public&nbsp;</span><span class="
+							unchanged modifier
+						">abstract&nbsp;</span><span class="
+							unchanged modifier
+						"></span><span class="
+						unchanged
+					">interface</span>&nbsp;
+						com.sun.source.tree.BreakTree</span><a href="#toc" class="toc_link">top</a>
+                    </div>
+                    <div class="class_fileFormatVersion">
+                        <span class="label_class_member">class File Format Version:</span>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td>Status</td><td>Old Version</td><td>New Version</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="
+						modified
+					">MODIFIED</span></td><td>55.0</td><td>56.0</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="class_superclass"></div>
+                    <div class="class_interfaces"></div>
+                    <div class="class_fields"></div>
+                    <div class="class_constructors"></div>
+                    <div class="class_methods">
+                        <span class="label_class_member">Methods:</span>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td>Status</td><td>Modifier</td><td>Type</td><td>Method</td><td>Exceptions</td><td>Compatibility Changes:</td><td>Line Number</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="
+						new
+					">NEW
+				(*)
+			</span></td><td><span class="
+							new modifier
+						"></span><span class="
+							new modifier
+						"></span><span class="
+							new modifier
+						">public&nbsp;</span><span class="
+							new modifier
+						">abstract&nbsp;</span><span class="
+							new modifier
+						"></span><span class="
+							new modifier
+						"></span></td><td><span class="
+						new method_return_type
+					">com.sun.source.tree.ExpressionTree</span></td><td>getValue()
+				</td><td>n.a.</td><td>
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <td>Change</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>METHOD_ADDED_TO_INTERFACE</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td><td>
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <td>Old file</td><td>New file</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>n.a.</td><td>n.a.</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="class" id="com.sun.source.tree.CaseTree">
+                    <div class="class_header">
+                        <span class="label"><a name="com.sun.source.tree.CaseTree"></a><span class="
+						modified
+					">MODIFIED
+				(*)
+			</span><span class="
+					">
+					&nbsp;
+				</span><span class="
+							unchanged modifier
+						"></span><span class="
+							unchanged modifier
+						"></span><span class="
+							unchanged modifier
+						">public&nbsp;</span><span class="
+							unchanged modifier
+						">abstract&nbsp;</span><span class="
+							unchanged modifier
+						"></span><span class="
+						unchanged
+					">interface</span>&nbsp;
+						com.sun.source.tree.CaseTree</span><a href="#toc" class="toc_link">top</a>
+                    </div>
+                    <div class="class_fileFormatVersion">
+                        <span class="label_class_member">class File Format Version:</span>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td>Status</td><td>Old Version</td><td>New Version</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="
+						modified
+					">MODIFIED</span></td><td>55.0</td><td>56.0</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="class_superclass"></div>
+                    <div class="class_interfaces"></div>
+                    <div class="class_fields"></div>
+                    <div class="class_constructors"></div>
+                    <div class="class_methods">
+                        <span class="label_class_member">Methods:</span>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td>Status</td><td>Modifier</td><td>Type</td><td>Method</td><td>Exceptions</td><td>Compatibility Changes:</td><td>Line Number</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="
+						new
+					">NEW
+				(*)
+			</span></td><td><span class="
+							new modifier
+						"></span><span class="
+							new modifier
+						"></span><span class="
+							new modifier
+						">public&nbsp;</span><span class="
+							new modifier
+						"></span><span class="
+							new modifier
+						"></span><span class="
+							new modifier
+						"></span></td><td><span class="
+						new method_return_type
+					">com.sun.source.tree.Tree</span></td><td>getBody()
+				</td><td>n.a.</td><td>
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <td>Change</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>METHOD_ADDED_TO_INTERFACE</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td><td>
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <td>Old file</td><td>New file</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>n.a.</td><td>95</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><span class="
+						new
+					">NEW
+				(*)
+			</span></td><td><span class="
+							new modifier
+						"></span><span class="
+							new modifier
+						"></span><span class="
+							new modifier
+						">public&nbsp;</span><span class="
+							new modifier
+						"></span><span class="
+							new modifier
+						"></span><span class="
+							new modifier
+						"></span></td><td><span class="
+						new method_return_type
+					">com.sun.source.tree.CaseTree$CaseKind</span></td><td>getCaseKind()
+				</td><td>n.a.</td><td>
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <td>Change</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>METHOD_ADDED_TO_INTERFACE</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td><td>
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <td>Old file</td><td>New file</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>n.a.</td><td>110</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><span class="
+						new
+					">NEW
+				(*)
+			</span></td><td><span class="
+							new modifier
+						"></span><span class="
+							new modifier
+						"></span><span class="
+							new modifier
+						">public&nbsp;</span><span class="
+							new modifier
+						">abstract&nbsp;</span><span class="
+							new modifier
+						"></span><span class="
+							new modifier
+						"></span></td><td><span class="
+						new method_return_type
+					">java.util.List</span></td><td>getExpressions()
+				</td><td>n.a.</td><td>
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <td>Change</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>METHOD_ADDED_TO_INTERFACE</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td><td>
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <td>Old file</td><td>New file</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>n.a.</td><td>n.a.</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="class" id="com.sun.source.tree.CaseTree$CaseKind">
+                    <div class="class_header">
+                        <span class="label"><a name="com.sun.source.tree.CaseTree$CaseKind"></a><span class="
+						new
+					">NEW</span><span class="
+						new
+					">
+					(Serializable compatible)&nbsp;
+				</span><span class="
+							new modifier
+						">final&nbsp;</span><span class="
+							new modifier
+						">static&nbsp;</span><span class="
+							new modifier
+						">public&nbsp;</span><span class="
+							new modifier
+						"></span><span class="
+							new modifier
+						"></span><span class="
+						new
+					">enum</span>&nbsp;
+						com.sun.source.tree.CaseTree$CaseKind</span><a href="#toc" class="toc_link">top</a>
+                    </div>
+                    <div class="class_compatibilityChanges">
+                        <span class="label_class_member">Compatibility Changes:</span>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td>Change</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>INTERFACE_ADDED</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="class_superclass">
+                        <span class="label_class_member">Superclass:</span>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td>Status</td><td>Superclass</td><td>Compatibility Changes:</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="
+						new
+					">NEW</span></td><td>java.lang.Enum</td><td>
+			n.a.
+		</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="class_interfaces">
+                        <span class="label_class_member">Interfaces:</span>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td>Status</td><td>Interface</td><td>Compatibility Changes:</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="
+						new
+					">NEW</span></td><td>java.io.Serializable</td><td>
+			n.a.
+		</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="
+						new
+					">NEW</span></td><td>java.lang.Comparable</td><td>
+			n.a.
+		</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="class_serialVersionUid">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td></td><td>Serializable</td><td>default serialVersionUID</td><td>serialVersionUID in class</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="matrix_layout">Old</td><td class="
+												modified
+											">false</td><td class="
+												modified
+											">n.a.</td><td>n.a.</td>
+                                </tr>
+                                <tr>
+                                    <td class="matrix_layout">New</td><td class="
+												modified
+											">true</td><td class="
+												modified
+											">5223785057599563871</td><td>n.a.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="class_fields">
+                        <span class="label_class_member">Fields:</span>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td>Status</td><td>Modifier</td><td>Type</td><td>Field</td><td>Compatibility Changes:</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="
+						new
+					">NEW</span></td><td><span class="
+							new modifier
+						">public&nbsp;</span><span class="
+							new modifier
+						">static&nbsp;</span><span class="
+							new modifier
+						">final&nbsp;</span><span class="
+							new modifier
+						"></span></td><td><span class="
+						new modifier
+					">com.sun.source.tree.CaseTree$CaseKind</span></td><td>
+			n.a.
+		</td><td>RULE</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="
+						new
+					">NEW</span></td><td><span class="
+							new modifier
+						">public&nbsp;</span><span class="
+							new modifier
+						">static&nbsp;</span><span class="
+							new modifier
+						">final&nbsp;</span><span class="
+							new modifier
+						"></span></td><td><span class="
+						new modifier
+					">com.sun.source.tree.CaseTree$CaseKind</span></td><td>
+			n.a.
+		</td><td>STATEMENT</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="class_constructors"></div>
+                    <div class="class_methods">
+                        <span class="label_class_member">Methods:</span>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td>Status</td><td>Modifier</td><td>Type</td><td>Method</td><td>Exceptions</td><td>Compatibility Changes:</td><td>Line Number</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="
+						new
+					">NEW</span></td><td><span class="
+							new modifier
+						"></span><span class="
+							new modifier
+						">static&nbsp;</span><span class="
+							new modifier
+						">public&nbsp;</span><span class="
+							new modifier
+						"></span><span class="
+							new modifier
+						"></span><span class="
+							new modifier
+						"></span></td><td><span class="
+						new method_return_type
+					">com.sun.source.tree.CaseTree$CaseKind</span></td><td>valueOf(java.lang.String)
+				</td><td>n.a.</td><td>
+			n.a.
+		</td><td>
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <td>Old file</td><td>New file</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>n.a.</td><td>126</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><span class="
+						new
+					">NEW</span></td><td><span class="
+							new modifier
+						"></span><span class="
+							new modifier
+						">static&nbsp;</span><span class="
+							new modifier
+						">public&nbsp;</span><span class="
+							new modifier
+						"></span><span class="
+							new modifier
+						"></span><span class="
+							new modifier
+						"></span></td><td><span class="
+						new method_return_type
+					">com.sun.source.tree.CaseTree$CaseKind[]</span></td><td>values()
+				</td><td>n.a.</td><td>
+			n.a.
+		</td><td>
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <td>Old file</td><td>New file</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>n.a.</td><td>126</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="class" id="com.sun.source.tree.SwitchExpressionTree">
+                    <div class="class_header">
+                        <span class="label"><a name="com.sun.source.tree.SwitchExpressionTree"></a><span class="
+						new
+					">NEW</span><span class="
+					">
+					&nbsp;
+				</span><span class="
+							new modifier
+						"></span><span class="
+							new modifier
+						"></span><span class="
+							new modifier
+						">public&nbsp;</span><span class="
+							new modifier
+						">abstract&nbsp;</span><span class="
+							new modifier
+						"></span><span class="
+						new
+					">interface</span>&nbsp;
+						com.sun.source.tree.SwitchExpressionTree</span><a href="#toc" class="toc_link">top</a>
+                    </div>
+                    <div class="class_compatibilityChanges">
+                        <span class="label_class_member">Compatibility Changes:</span>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td>Change</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>INTERFACE_ADDED</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="class_superclass"></div>
+                    <div class="class_interfaces">
+                        <span class="label_class_member">Interfaces:</span>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td>Status</td><td>Interface</td><td>Compatibility Changes:</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="
+						new
+					">NEW</span></td><td>com.sun.source.tree.ExpressionTree</td><td>
+			n.a.
+		</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="
+						new
+					">NEW</span></td><td>com.sun.source.tree.Tree</td><td>
+			n.a.
+		</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="class_fields"></div>
+                    <div class="class_constructors"></div>
+                    <div class="class_methods">
+                        <span class="label_class_member">Methods:</span>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td>Status</td><td>Modifier</td><td>Type</td><td>Method</td><td>Exceptions</td><td>Compatibility Changes:</td><td>Line Number</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="
+						new
+					">NEW</span></td><td><span class="
+							new modifier
+						"></span><span class="
+							new modifier
+						"></span><span class="
+							new modifier
+						">public&nbsp;</span><span class="
+							new modifier
+						">abstract&nbsp;</span><span class="
+							new modifier
+						"></span><span class="
+							new modifier
+						"></span></td><td><span class="
+						new method_return_type
+					">java.util.List</span></td><td>getCases()
+				</td><td>n.a.</td><td>
+			n.a.
+		</td><td>
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <td>Old file</td><td>New file</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>n.a.</td><td>n.a.</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><span class="
+						new
+					">NEW</span></td><td><span class="
+							new modifier
+						"></span><span class="
+							new modifier
+						"></span><span class="
+							new modifier
+						">public&nbsp;</span><span class="
+							new modifier
+						">abstract&nbsp;</span><span class="
+							new modifier
+						"></span><span class="
+							new modifier
+						"></span></td><td><span class="
+						new method_return_type
+					">com.sun.source.tree.ExpressionTree</span></td><td>getExpression()
+				</td><td>n.a.</td><td>
+			n.a.
+		</td><td>
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <td>Old file</td><td>New file</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>n.a.</td><td>n.a.</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="class" id="com.sun.source.tree.Tree$Kind">
+                    <div class="class_header">
+                        <span class="label"><a name="com.sun.source.tree.Tree$Kind"></a><span class="
+						modified
+					">MODIFIED</span><span class="
+						new
+					">
+					(Serializable compatible)&nbsp;
+				</span><span class="
+							unchanged modifier
+						">final&nbsp;</span><span class="
+							unchanged modifier
+						">static&nbsp;</span><span class="
+							unchanged modifier
+						">public&nbsp;</span><span class="
+							unchanged modifier
+						"></span><span class="
+							unchanged modifier
+						"></span><span class="
+						unchanged
+					">enum</span>&nbsp;
+						com.sun.source.tree.Tree$Kind</span><a href="#toc" class="toc_link">top</a>
+                    </div>
+                    <div class="class_fileFormatVersion">
+                        <span class="label_class_member">class File Format Version:</span>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td>Status</td><td>Old Version</td><td>New Version</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="
+						modified
+					">MODIFIED</span></td><td>55.0</td><td>56.0</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="class_superclass"></div>
+                    <div class="class_interfaces"></div>
+                    <div class="class_serialVersionUid">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td></td><td>Serializable</td><td>default serialVersionUID</td><td>serialVersionUID in class</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="matrix_layout">Old</td><td>true</td><td class="
+												modified
+											">5803180436972290673</td><td>n.a.</td>
+                                </tr>
+                                <tr>
+                                    <td class="matrix_layout">New</td><td>true</td><td class="
+												modified
+											">7674342999711913928</td><td>n.a.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="class_fields">
+                        <span class="label_class_member">Fields:</span>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td>Status</td><td>Modifier</td><td>Type</td><td>Field</td><td>Compatibility Changes:</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="
+						new
+					">NEW</span></td><td><span class="
+							new modifier
+						">public&nbsp;</span><span class="
+							new modifier
+						">static&nbsp;</span><span class="
+							new modifier
+						">final&nbsp;</span><span class="
+							new modifier
+						"></span></td><td><span class="
+						new modifier
+					">com.sun.source.tree.Tree$Kind</span></td><td>
+			n.a.
+		</td><td>SWITCH_EXPRESSION</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="class_constructors"></div>
+                    <div class="class_methods"></div>
+                </div>
+            </div>
+            <div>
+                <div class="class" id="com.sun.source.tree.TreeVisitor">
+                    <div class="class_header">
+                        <span class="label"><a name="com.sun.source.tree.TreeVisitor"></a><span class="
+						modified
+					">MODIFIED
+				(*)
+			</span><span class="
+					">
+					&nbsp;
+				</span><span class="
+							unchanged modifier
+						"></span><span class="
+							unchanged modifier
+						"></span><span class="
+							unchanged modifier
+						">public&nbsp;</span><span class="
+							unchanged modifier
+						">abstract&nbsp;</span><span class="
+							unchanged modifier
+						"></span><span class="
+						unchanged
+					">interface</span>&nbsp;
+						com.sun.source.tree.TreeVisitor</span><a href="#toc" class="toc_link">top</a>
+                    </div>
+                    <div class="class_fileFormatVersion">
+                        <span class="label_class_member">class File Format Version:</span>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td>Status</td><td>Old Version</td><td>New Version</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="
+						modified
+					">MODIFIED</span></td><td>55.0</td><td>56.0</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="class_superclass"></div>
+                    <div class="class_interfaces"></div>
+                    <div class="class_fields"></div>
+                    <div class="class_constructors"></div>
+                    <div class="class_methods">
+                        <span class="label_class_member">Methods:</span>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td>Status</td><td>Modifier</td><td>Type</td><td>Method</td><td>Exceptions</td><td>Compatibility Changes:</td><td>Line Number</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="
+						new
+					">NEW
+				(*)
+			</span></td><td><span class="
+							new modifier
+						"></span><span class="
+							new modifier
+						"></span><span class="
+							new modifier
+						">public&nbsp;</span><span class="
+							new modifier
+						">abstract&nbsp;</span><span class="
+							new modifier
+						"></span><span class="
+							new modifier
+						"></span></td><td><span class="
+						new method_return_type
+					">java.lang.Object</span></td><td>visitSwitchExpression(com.sun.source.tree.SwitchExpressionTree,
+
+                                        <wbr></wbr>
+                                        java.lang.Object)
+				</td><td>n.a.</td><td>
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <td>Change</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>METHOD_ADDED_TO_INTERFACE</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td><td>
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <td>Old file</td><td>New file</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>n.a.</td><td>n.a.</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="class" id="com.sun.source.util.SimpleTreeVisitor">
+                    <div class="class_header">
+                        <span class="label"><a name="com.sun.source.util.SimpleTreeVisitor"></a><span class="
+						modified
+					">MODIFIED</span><span class="
+					">
+					&nbsp;
+				</span><span class="
+							unchanged modifier
+						"></span><span class="
+							unchanged modifier
+						"></span><span class="
+							unchanged modifier
+						">public&nbsp;</span><span class="
+							unchanged modifier
+						"></span><span class="
+							unchanged modifier
+						"></span><span class="
+						unchanged
+					">class</span>&nbsp;
+						com.sun.source.util.SimpleTreeVisitor</span><a href="#toc" class="toc_link">top</a>
+                    </div>
+                    <div class="class_fileFormatVersion">
+                        <span class="label_class_member">class File Format Version:</span>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td>Status</td><td>Old Version</td><td>New Version</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="
+						modified
+					">MODIFIED</span></td><td>55.0</td><td>56.0</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="class_superclass"></div>
+                    <div class="class_interfaces">
+                        <span class="label_class_member">Interfaces:</span>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td>Status</td><td>Interface</td><td>Compatibility Changes:</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="
+						unchanged
+					">UNCHANGED
+				(*)
+			</span></td><td>com.sun.source.tree.TreeVisitor</td><td>
+			n.a.
+		</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="class_fields"></div>
+                    <div class="class_constructors"></div>
+                    <div class="class_methods">
+                        <span class="label_class_member">Methods:</span>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td>Status</td><td>Modifier</td><td>Type</td><td>Method</td><td>Exceptions</td><td>Compatibility Changes:</td><td>Line Number</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="
+						new
+					">NEW</span></td><td><span class="
+							new modifier
+						"></span><span class="
+							new modifier
+						"></span><span class="
+							new modifier
+						">public&nbsp;</span><span class="
+							new modifier
+						"></span><span class="
+							new modifier
+						"></span><span class="
+							new modifier
+						"></span></td><td><span class="
+						new method_return_type
+					">java.lang.Object</span></td><td>visitSwitchExpression(com.sun.source.tree.SwitchExpressionTree,
+
+                                        <wbr></wbr>
+                                        java.lang.Object)
+				</td><td>n.a.</td><td>
+			n.a.
+		</td><td>
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <td>Old file</td><td>New file</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>n.a.</td><td>282</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="class" id="com.sun.source.util.TreeScanner">
+                    <div class="class_header">
+                        <span class="label"><a name="com.sun.source.util.TreeScanner"></a><span class="
+						modified
+					">MODIFIED</span><span class="
+					">
+					&nbsp;
+				</span><span class="
+							unchanged modifier
+						"></span><span class="
+							unchanged modifier
+						"></span><span class="
+							unchanged modifier
+						">public&nbsp;</span><span class="
+							unchanged modifier
+						"></span><span class="
+							unchanged modifier
+						"></span><span class="
+						unchanged
+					">class</span>&nbsp;
+						com.sun.source.util.TreeScanner</span><a href="#toc" class="toc_link">top</a>
+                    </div>
+                    <div class="class_fileFormatVersion">
+                        <span class="label_class_member">class File Format Version:</span>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td>Status</td><td>Old Version</td><td>New Version</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="
+						modified
+					">MODIFIED</span></td><td>55.0</td><td>56.0</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="class_superclass"></div>
+                    <div class="class_interfaces">
+                        <span class="label_class_member">Interfaces:</span>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td>Status</td><td>Interface</td><td>Compatibility Changes:</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="
+						unchanged
+					">UNCHANGED
+				(*)
+			</span></td><td>com.sun.source.tree.TreeVisitor</td><td>
+			n.a.
+		</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="class_fields"></div>
+                    <div class="class_constructors"></div>
+                    <div class="class_methods">
+                        <span class="label_class_member">Methods:</span>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td>Status</td><td>Modifier</td><td>Type</td><td>Method</td><td>Exceptions</td><td>Compatibility Changes:</td><td>Line Number</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="
+						new
+					">NEW</span></td><td><span class="
+							new modifier
+						"></span><span class="
+							new modifier
+						"></span><span class="
+							new modifier
+						">public&nbsp;</span><span class="
+							new modifier
+						"></span><span class="
+							new modifier
+						"></span><span class="
+							new modifier
+						"></span></td><td><span class="
+						new method_return_type
+					">java.lang.Object</span></td><td>visitSwitchExpression(com.sun.source.tree.SwitchExpressionTree,
+
+                                        <wbr></wbr>
+                                        java.lang.Object)
+				</td><td>n.a.</td><td>
+			n.a.
+		</td><td>
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <td>Old file</td><td>New file</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>n.a.</td><td>353</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="class" id="java.lang.management.MemoryType">
+                    <div class="class_header">
+                        <span class="label"><a name="java.lang.management.MemoryType"></a><span class="
+						unchanged
+					">UNCHANGED</span><span class="
+						removed
+					">
+					(Serializable incompatible(!): serialVersionUID removed but not matches new default serialVersionUID)&nbsp;
+				</span><span class="
+							unchanged modifier
+						">final&nbsp;</span><span class="
+							unchanged modifier
+						"></span><span class="
+							unchanged modifier
+						">public&nbsp;</span><span class="
+							unchanged modifier
+						"></span><span class="
+							unchanged modifier
+						"></span><span class="
+						unchanged
+					">enum</span>&nbsp;
+						java.lang.management.MemoryType</span><a href="#toc" class="toc_link">top</a>
+                    </div>
+                    <div class="class_fileFormatVersion">
+                        <span class="label_class_member">class File Format Version:</span>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td>Status</td><td>Old Version</td><td>New Version</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="
+						modified
+					">MODIFIED</span></td><td>55.0</td><td>56.0</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="class_superclass"></div>
+                    <div class="class_interfaces"></div>
+                    <div class="class_serialVersionUid">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td></td><td>Serializable</td><td>default serialVersionUID</td><td>serialVersionUID in class</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="matrix_layout">Old</td><td>true</td><td>5773766712972089521</td><td class="
+												modified
+											">6992337162326171013</td>
+                                </tr>
+                                <tr>
+                                    <td class="matrix_layout">New</td><td>true</td><td>5773766712972089521</td><td class="
+												modified
+											">n.a.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="class_fields"></div>
+                    <div class="class_constructors"></div>
+                    <div class="class_methods"></div>
+                </div>
+            </div>
             <div>
                 <div class="class" id="javax.lang.model.SourceVersion">
                     <div class="class_header">
