@@ -20,10 +20,10 @@ Example reports created by this generator can be found in the _docs_ directory:
 To create reports yourself, e.g. with different settings, run `mvn clean install`.
 The API change report can be found at _target/jdk-api-diff.html_.
 
-### Dockerfile
+### Using Docker
 
 To create a report yourself using Docker, pick valid SDKMAN java tags and pass them as JDK1 and JDK2 build-args: 
-`docker build --build-arg JDK1=11.0.5-open --build-arg JDK2=12.0.2-open -t jdk-api-diff . && docker run --rm --entrypoint cat jdk-api-diff target/jdk-api-diff.html > ./jdk-api-diff.html`
+`./compare 11.0.5-open 12.0.2-open`
 
 [Maven Toolchains](https://maven.apache.org/guides/mini/guide-using-toolchains.html) are used to locate the JDKs to compare.
 There must be a toolchain entry of type `jdk` for each JDK to compare.
