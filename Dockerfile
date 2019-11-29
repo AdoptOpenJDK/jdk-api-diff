@@ -25,4 +25,4 @@ COPY LICENSE.txt /jdk-api-diff/LICENSE.txt
 
 WORKDIR jdk-api-diff
 
-RUN mvn install -Djdk1=version=1,vendor=openjdk -Djdk2=version=2,vendor=openjdk
+RUN mvn install
