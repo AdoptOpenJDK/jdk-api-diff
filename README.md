@@ -23,7 +23,7 @@ The API change report can be found at _target/jdk-api-diff.html_.
 ### Using Docker
 
 To create a report yourself using Docker, pick valid SDKMAN java tags and pass them as JDK1 and JDK2 build-args: 
-`./compare 11.0.5-open 12.0.2-open`
+`./compare.sh 11.0.5-open 12.0.2-open`
 
 [Maven Toolchains](https://maven.apache.org/guides/mini/guide-using-toolchains.html) are used to locate the JDKs to compare.
 There must be a toolchain entry of type `jdk` for each JDK to compare.
