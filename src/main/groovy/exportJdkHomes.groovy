@@ -29,7 +29,7 @@ def getJdkHome(String jdkSelector) {
 	if ( toolChains.isEmpty() ) {
 		throw new IllegalArgumentException( "No matching toolchain found for requirements " + jdkSelector );
 	}
-	else if ( toolChains.size > 1 ) {
+	else if ( toolChains.size() > 1 ) {
 		throw new IllegalArgumentException( "Multiple matching toolchains found for requirements " + jdkSelector );
 	}
 	else {
