@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 
-     Copyright 2017-2018 AdoptOpenJDK contributors (https://adoptopenjdk.net/);
+     Copyright 2017-2020 AdoptOpenJDK contributors (https://adoptopenjdk.net/);
      See the copyright.txt file in the distribution for a full listing of all
      contributors.
 
@@ -64,8 +64,8 @@
                 </configuration>
             </toolchain>
          -->
-        <jdk1>version=10,vendor=openjdk</jdk1>
-        <jdk2>version=11,vendor=openjdk</jdk2>
+        <jdk1>version=14,vendor=openjdk</jdk1>
+        <jdk2>version=15,vendor=openjdk</jdk2>
     </properties>
 
     <build>
