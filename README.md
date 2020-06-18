@@ -14,7 +14,7 @@ Example reports created by this generator can be found in the _docs_ directory:
 * API comparison of OpenJDK 11.0.1+13 and OpenJDK 12-ea+27: [jdk11-jdk12-api-diff.html](https://gunnarmorling.github.io/jdk-api-diff/jdk11-jdk12-api-diff.html)
 * API comparison of OpenJDK 12.0.1 and OpenJDK 13-ea+25: [jdk12-jdk13-api-diff.html](https://gunnarmorling.github.io/jdk-api-diff/jdk12-jdk13-api-diff.html)
 * API comparison of OpenJDK 13.0.2 and OpenJDK 14.0.1: [jdk13-jdk14-api-diff.html](https://gunnarmorling.github.io/jdk-api-diff/jdk13-jdk14-api-diff.html)
-* API comparison of OpenJDK 14.0.1 and OpenJDK 15-ea+26: [jdk14-jdk15-api-diff.html](https://gunnarmorling.github.io/jdk-api-diff/jdk14-jdk15-api-diff.html)
+* API comparison of OpenJDK 14.0.1 and OpenJDK 15-ea+27: [jdk14-jdk15-api-diff.html](https://gunnarmorling.github.io/jdk-api-diff/jdk14-jdk15-api-diff.html)
 
 ## Usage
 

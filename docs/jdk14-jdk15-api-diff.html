@@ -1,7 +1,7 @@
 <html>
     <head>
         <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JDK 14.0.1 to 15-ea+26 API Change Report</title>
+        <title>JDK 14.0.1 to 15-ea+27 API Change Report</title>
         <style type="text/css">
 body {
     font-family: Verdana;
@@ -120,7 +120,7 @@ ul {
 </style>
     </head>
     <body>
-        <span class="title">JDK 14.0.1 to 15-ea+26 API Change Report</span>
+        <span class="title">JDK 14.0.1 to 15-ea+27 API Change Report</span>
         <br>
         <div class="meta-information">
             <table>
@@ -128,10 +128,10 @@ ul {
                     <td>Old:</td><td>JDK 14.0.1</td>
                 </tr>
                 <tr>
-                    <td>New:</td><td>JDK 15-ea+26</td>
+                    <td>New:</td><td>JDK 15-ea+27</td>
                 </tr>
                 <tr>
-                    <td>Created:</td><td>2020-06-05T21:10:03.482+0200</td>
+                    <td>Created:</td><td>2020-06-17T15:10:41.027+0200</td>
                 </tr>
                 <tr>
                     <td>Access modifier filter:</td><td>PROTECTED</td>
@@ -1009,7 +1009,23 @@ ul {
                     <tr>
                         <td><span class="
 						modified
-					">MODIFIED</span></td><td><a href="#jdk.net.ExtendedSocketOptions">jdk.net.ExtendedSocketOptions</a></td>
+					">MODIFIED
+				(!)
+			</span></td><td><a href="#jdk.net.ExtendedSocketOptions">jdk.net.ExtendedSocketOptions</a></td>
+                    </tr>
+                    <tr>
+                        <td><span class="
+						removed
+					">REMOVED
+				(!)
+			</span></td><td><a href="#jdk.net.SocketFlow">jdk.net.SocketFlow</a></td>
+                    </tr>
+                    <tr>
+                        <td><span class="
+						removed
+					">REMOVED
+				(!)
+			</span></td><td><a href="#jdk.net.SocketFlow$Status">jdk.net.SocketFlow$Status</a></td>
                     </tr>
                 </tbody>
             </table>
@@ -2679,7 +2695,57 @@ ul {
                                             </thead>
                                             <tbody>
                                                 <tr>
-                                                    <td>n.a.</td><td>1956</td>
+                                                    <td>n.a.</td><td>1957</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><span class="
+						new
+					">NEW</span></td><td><span class="
+							new modifier
+						"></span><span class="
+							new modifier
+						"></span><span class="
+							new modifier
+						">public&nbsp;</span><span class="
+							new modifier
+						"></span><span class="
+							new modifier
+						"></span><span class="
+							new modifier
+						"></span></td><td><span class="
+						new method_return_type
+					">java.lang.Class</span></td><td>ensureInitialized(java.lang.Class)
+				</td><td>
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <td>Status:</td><td>Name:</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td><span class="
+						new
+					">NEW</span></td><td>java.lang.IllegalAccessException</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td><td>
+			n.a.
+		</td><td>
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <td>Old file</td><td>New file</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>n.a.</td><td>2611</td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -2891,7 +2957,7 @@ ul {
                                             </thead>
                                             <tbody>
                                                 <tr>
-                                                    <td>n.a.</td><td>1705</td>
+                                                    <td>n.a.</td><td>1706</td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -2926,7 +2992,7 @@ ul {
                                             </thead>
                                             <tbody>
                                                 <tr>
-                                                    <td>n.a.</td><td>1705</td>
+                                                    <td>n.a.</td><td>1706</td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -4547,7 +4613,7 @@ ul {
                                             </thead>
                                             <tbody>
                                                 <tr>
-                                                    <td>n.a.</td><td>1657</td>
+                                                    <td>n.a.</td><td>1731</td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -40659,7 +40725,9 @@ ul {
                     <div class="class_header">
                         <span class="label"><a name="jdk.net.ExtendedSocketOptions"></a><span class="
 						modified
-					">MODIFIED</span><span class="
+					">MODIFIED
+				(!)
+			</span><span class="
 					">
 					&nbsp;
 				</span><span class="
@@ -40707,6 +40775,38 @@ ul {
                             <tbody>
                                 <tr>
                                     <td><span class="
+						removed
+					">REMOVED
+				(!)
+			</span></td><td><span class="
+							removed modifier
+						">public&nbsp;</span><span class="
+							removed modifier
+						">static&nbsp;</span><span class="
+							removed modifier
+						">final&nbsp;</span><span class="
+							removed modifier
+						"></span></td><td><span class="
+						removed modifier
+					">java.net.SocketOption
+				(!)
+			</span></td><td>
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <td>Change</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>FIELD_REMOVED</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td><td>SO_FLOW_SLA</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="
 						new
 					">NEW</span></td><td><span class="
 							new modifier
@@ -40727,6 +40827,1056 @@ ul {
                     </div>
                     <div class="class_constructors"></div>
                     <div class="class_methods"></div>
+                </div>
+            </div>
+            <div>
+                <div class="class" id="jdk.net.SocketFlow">
+                    <div class="class_header">
+                        <span class="label"><a name="jdk.net.SocketFlow"></a><span class="
+						removed
+					">REMOVED
+				(!)
+			</span><span class="
+					">
+					&nbsp;
+				</span><span class="
+							removed modifier
+						"></span><span class="
+							removed modifier
+						"></span><span class="
+							removed modifier
+						">public&nbsp;</span><span class="
+							removed modifier
+						"></span><span class="
+							removed modifier
+						"></span><span class="
+						removed
+					">class</span>&nbsp;
+						jdk.net.SocketFlow</span><a href="#toc" class="toc_link">top</a>
+                    </div>
+                    <div class="class_compatibilityChanges">
+                        <span class="label_class_member">Compatibility Changes:</span>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td>Change</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>CLASS_REMOVED</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="class_superclass"></div>
+                    <div class="class_interfaces"></div>
+                    <div class="class_fields">
+                        <span class="label_class_member">Fields:</span>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td>Status</td><td>Modifier</td><td>Type</td><td>Field</td><td>Compatibility Changes:</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="
+						removed
+					">REMOVED
+				(!)
+			</span></td><td><span class="
+							removed modifier
+						">public&nbsp;</span><span class="
+							removed modifier
+						">static&nbsp;</span><span class="
+							removed modifier
+						">final&nbsp;</span><span class="
+							removed modifier
+						"></span></td><td><span class="
+						removed modifier
+					">int
+				(!)
+			</span></td><td>
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <td>Change</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>FIELD_REMOVED</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td><td>HIGH_PRIORITY</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="
+						removed
+					">REMOVED
+				(!)
+			</span></td><td><span class="
+							removed modifier
+						">public&nbsp;</span><span class="
+							removed modifier
+						">static&nbsp;</span><span class="
+							removed modifier
+						">final&nbsp;</span><span class="
+							removed modifier
+						"></span></td><td><span class="
+						removed modifier
+					">int
+				(!)
+			</span></td><td>
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <td>Change</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>FIELD_REMOVED</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td><td>NORMAL_PRIORITY</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="
+						removed
+					">REMOVED
+				(!)
+			</span></td><td><span class="
+							removed modifier
+						">public&nbsp;</span><span class="
+							removed modifier
+						">static&nbsp;</span><span class="
+							removed modifier
+						">final&nbsp;</span><span class="
+							removed modifier
+						"></span></td><td><span class="
+						removed modifier
+					">int
+				(!)
+			</span></td><td>
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <td>Change</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>FIELD_REMOVED</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td><td>UNSET</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="class_constructors"></div>
+                    <div class="class_methods">
+                        <span class="label_class_member">Methods:</span>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td>Status</td><td>Modifier</td><td>Type</td><td>Method</td><td>Exceptions</td><td>Compatibility Changes:</td><td>Line Number</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="
+						removed
+					">REMOVED
+				(!)
+			</span></td><td><span class="
+							removed modifier
+						"></span><span class="
+							removed modifier
+						"></span><span class="
+							removed modifier
+						">public&nbsp;</span><span class="
+							removed modifier
+						"></span><span class="
+							removed modifier
+						"></span><span class="
+							removed modifier
+						"></span></td><td><span class="
+						removed method_return_type
+					">jdk.net.SocketFlow</span></td><td>bandwidth(long)
+				</td><td>n.a.</td><td>
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <td>Change</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>METHOD_REMOVED</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td><td>
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <td>Old file</td><td>New file</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>165</td><td>n.a.</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><span class="
+						removed
+					">REMOVED
+				(!)
+			</span></td><td><span class="
+							removed modifier
+						"></span><span class="
+							removed modifier
+						"></span><span class="
+							removed modifier
+						">public&nbsp;</span><span class="
+							removed modifier
+						"></span><span class="
+							removed modifier
+						"></span><span class="
+							removed modifier
+						"></span></td><td><span class="
+						removed method_return_type
+					">long</span></td><td>bandwidth()
+				</td><td>n.a.</td><td>
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <td>Change</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>METHOD_REMOVED</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td><td>
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <td>Old file</td><td>New file</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>184</td><td>n.a.</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><span class="
+						removed
+					">REMOVED
+				(!)
+			</span></td><td><span class="
+							removed modifier
+						"></span><span class="
+							removed modifier
+						">static&nbsp;</span><span class="
+							removed modifier
+						">public&nbsp;</span><span class="
+							removed modifier
+						"></span><span class="
+							removed modifier
+						"></span><span class="
+							removed modifier
+						"></span></td><td><span class="
+						removed method_return_type
+					">jdk.net.SocketFlow</span></td><td>create()
+				</td><td>n.a.</td><td>
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <td>Change</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>METHOD_REMOVED</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td><td>
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <td>Old file</td><td>New file</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>139</td><td>n.a.</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><span class="
+						removed
+					">REMOVED
+				(!)
+			</span></td><td><span class="
+							removed modifier
+						"></span><span class="
+							removed modifier
+						"></span><span class="
+							removed modifier
+						">public&nbsp;</span><span class="
+							removed modifier
+						"></span><span class="
+							removed modifier
+						"></span><span class="
+							removed modifier
+						"></span></td><td><span class="
+						removed method_return_type
+					">jdk.net.SocketFlow</span></td><td>priority(int)
+				</td><td>n.a.</td><td>
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <td>Change</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>METHOD_REMOVED</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td><td>
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <td>Old file</td><td>New file</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>152</td><td>n.a.</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><span class="
+						removed
+					">REMOVED
+				(!)
+			</span></td><td><span class="
+							removed modifier
+						"></span><span class="
+							removed modifier
+						"></span><span class="
+							removed modifier
+						">public&nbsp;</span><span class="
+							removed modifier
+						"></span><span class="
+							removed modifier
+						"></span><span class="
+							removed modifier
+						"></span></td><td><span class="
+						removed method_return_type
+					">int</span></td><td>priority()
+				</td><td>n.a.</td><td>
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <td>Change</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>METHOD_REMOVED</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td><td>
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <td>Old file</td><td>New file</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>175</td><td>n.a.</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><span class="
+						removed
+					">REMOVED
+				(!)
+			</span></td><td><span class="
+							removed modifier
+						"></span><span class="
+							removed modifier
+						"></span><span class="
+							removed modifier
+						">public&nbsp;</span><span class="
+							removed modifier
+						"></span><span class="
+							removed modifier
+						"></span><span class="
+							removed modifier
+						"></span></td><td><span class="
+						removed method_return_type
+					">jdk.net.SocketFlow$Status</span></td><td>status()
+				</td><td>n.a.</td><td>
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <td>Change</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>METHOD_REMOVED</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td><td>
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <td>Old file</td><td>New file</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>192</td><td>n.a.</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><span class="
+						removed
+					">REMOVED
+				(!)
+			</span></td><td><span class="
+							removed modifier
+						"></span><span class="
+							removed modifier
+						"></span><span class="
+							removed modifier
+						">public&nbsp;</span><span class="
+							removed modifier
+						"></span><span class="
+							removed modifier
+						"></span><span class="
+							removed modifier
+						"></span></td><td><span class="
+						removed method_return_type
+					">java.lang.String</span></td><td>toString()
+				</td><td>n.a.</td><td>
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <td>Change</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>METHOD_REMOVED</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td><td>
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <td>Old file</td><td>New file</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>201</td><td>n.a.</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="class" id="jdk.net.SocketFlow$Status">
+                    <div class="class_header">
+                        <span class="label"><a name="jdk.net.SocketFlow$Status"></a><span class="
+						removed
+					">REMOVED
+				(!)
+			</span><span class="
+						removed
+					">
+					(Serializable incompatible(!): class removed)&nbsp;
+				</span><span class="
+							removed modifier
+						">final&nbsp;</span><span class="
+							removed modifier
+						">static&nbsp;</span><span class="
+							removed modifier
+						">public&nbsp;</span><span class="
+							removed modifier
+						"></span><span class="
+							removed modifier
+						"></span><span class="
+						removed
+					">enum</span>&nbsp;
+						jdk.net.SocketFlow$Status</span><a href="#toc" class="toc_link">top</a>
+                    </div>
+                    <div class="class_compatibilityChanges">
+                        <span class="label_class_member">Compatibility Changes:</span>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td>Change</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>CLASS_REMOVED</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="class_superclass">
+                        <span class="label_class_member">Superclass:</span>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td>Status</td><td>Superclass</td><td>Compatibility Changes:</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="
+						removed
+					">REMOVED
+				(!)
+			</span></td><td>java.lang.Enum</td><td>
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <td>Change</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>SUPERCLASS_REMOVED</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="class_interfaces">
+                        <span class="label_class_member">Interfaces:</span>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td>Status</td><td>Interface</td><td>Compatibility Changes:</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="
+						removed
+					">REMOVED
+				(!)
+			</span></td><td>java.io.Serializable</td><td>
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <td>Change</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>INTERFACE_REMOVED</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><span class="
+						removed
+					">REMOVED
+				(!)
+			</span></td><td>java.lang.Comparable</td><td>
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <td>Change</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>INTERFACE_REMOVED</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><span class="
+						removed
+					">REMOVED
+				(!)
+			</span></td><td>java.lang.constant.Constable</td><td>
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <td>Change</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>INTERFACE_REMOVED</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="class_serialVersionUid">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td></td><td>Serializable</td><td>default serialVersionUID</td><td>serialVersionUID in class</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="matrix_layout">Old</td><td class="
+												modified
+											">true</td><td class="
+												modified
+											">7715029442017148528</td><td>n.a.</td>
+                                </tr>
+                                <tr>
+                                    <td class="matrix_layout">New</td><td class="
+												modified
+											">false</td><td class="
+												modified
+											">n.a.</td><td>n.a.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="class_fields">
+                        <span class="label_class_member">Fields:</span>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td>Status</td><td>Modifier</td><td>Type</td><td>Field</td><td>Compatibility Changes:</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="
+						removed
+					">REMOVED
+				(!)
+			</span></td><td><span class="
+							removed modifier
+						">public&nbsp;</span><span class="
+							removed modifier
+						">static&nbsp;</span><span class="
+							removed modifier
+						">final&nbsp;</span><span class="
+							removed modifier
+						"></span></td><td><span class="
+						removed modifier
+					">jdk.net.SocketFlow$Status
+				(!)
+			</span></td><td>
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <td>Change</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>FIELD_REMOVED</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td><td>ALREADY_CREATED</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="
+						removed
+					">REMOVED
+				(!)
+			</span></td><td><span class="
+							removed modifier
+						">public&nbsp;</span><span class="
+							removed modifier
+						">static&nbsp;</span><span class="
+							removed modifier
+						">final&nbsp;</span><span class="
+							removed modifier
+						"></span></td><td><span class="
+						removed modifier
+					">jdk.net.SocketFlow$Status
+				(!)
+			</span></td><td>
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <td>Change</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>FIELD_REMOVED</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td><td>IN_PROGRESS</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="
+						removed
+					">REMOVED
+				(!)
+			</span></td><td><span class="
+							removed modifier
+						">public&nbsp;</span><span class="
+							removed modifier
+						">static&nbsp;</span><span class="
+							removed modifier
+						">final&nbsp;</span><span class="
+							removed modifier
+						"></span></td><td><span class="
+						removed modifier
+					">jdk.net.SocketFlow$Status
+				(!)
+			</span></td><td>
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <td>Change</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>FIELD_REMOVED</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td><td>NO_PERMISSION</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="
+						removed
+					">REMOVED
+				(!)
+			</span></td><td><span class="
+							removed modifier
+						">public&nbsp;</span><span class="
+							removed modifier
+						">static&nbsp;</span><span class="
+							removed modifier
+						">final&nbsp;</span><span class="
+							removed modifier
+						"></span></td><td><span class="
+						removed modifier
+					">jdk.net.SocketFlow$Status
+				(!)
+			</span></td><td>
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <td>Change</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>FIELD_REMOVED</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td><td>NO_STATUS</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="
+						removed
+					">REMOVED
+				(!)
+			</span></td><td><span class="
+							removed modifier
+						">public&nbsp;</span><span class="
+							removed modifier
+						">static&nbsp;</span><span class="
+							removed modifier
+						">final&nbsp;</span><span class="
+							removed modifier
+						"></span></td><td><span class="
+						removed modifier
+					">jdk.net.SocketFlow$Status
+				(!)
+			</span></td><td>
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <td>Change</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>FIELD_REMOVED</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td><td>NOT_CONNECTED</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="
+						removed
+					">REMOVED
+				(!)
+			</span></td><td><span class="
+							removed modifier
+						">public&nbsp;</span><span class="
+							removed modifier
+						">static&nbsp;</span><span class="
+							removed modifier
+						">final&nbsp;</span><span class="
+							removed modifier
+						"></span></td><td><span class="
+						removed modifier
+					">jdk.net.SocketFlow$Status
+				(!)
+			</span></td><td>
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <td>Change</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>FIELD_REMOVED</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td><td>NOT_SUPPORTED</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="
+						removed
+					">REMOVED
+				(!)
+			</span></td><td><span class="
+							removed modifier
+						">public&nbsp;</span><span class="
+							removed modifier
+						">static&nbsp;</span><span class="
+							removed modifier
+						">final&nbsp;</span><span class="
+							removed modifier
+						"></span></td><td><span class="
+						removed modifier
+					">jdk.net.SocketFlow$Status
+				(!)
+			</span></td><td>
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <td>Change</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>FIELD_REMOVED</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td><td>OK</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="
+						removed
+					">REMOVED
+				(!)
+			</span></td><td><span class="
+							removed modifier
+						">public&nbsp;</span><span class="
+							removed modifier
+						">static&nbsp;</span><span class="
+							removed modifier
+						">final&nbsp;</span><span class="
+							removed modifier
+						"></span></td><td><span class="
+						removed modifier
+					">jdk.net.SocketFlow$Status
+				(!)
+			</span></td><td>
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <td>Change</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>FIELD_REMOVED</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td><td>OTHER</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="class_constructors"></div>
+                    <div class="class_methods">
+                        <span class="label_class_member">Methods:</span>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td>Status</td><td>Modifier</td><td>Type</td><td>Method</td><td>Exceptions</td><td>Compatibility Changes:</td><td>Line Number</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="
+						removed
+					">REMOVED
+				(!)
+			</span></td><td><span class="
+							removed modifier
+						"></span><span class="
+							removed modifier
+						">static&nbsp;</span><span class="
+							removed modifier
+						">public&nbsp;</span><span class="
+							removed modifier
+						"></span><span class="
+							removed modifier
+						"></span><span class="
+							removed modifier
+						"></span></td><td><span class="
+						removed method_return_type
+					">jdk.net.SocketFlow$Status</span></td><td>valueOf(java.lang.String)
+				</td><td>n.a.</td><td>
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <td>Change</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>METHOD_REMOVED</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td><td>
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <td>Old file</td><td>New file</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>77</td><td>n.a.</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><span class="
+						removed
+					">REMOVED
+				(!)
+			</span></td><td><span class="
+							removed modifier
+						"></span><span class="
+							removed modifier
+						">static&nbsp;</span><span class="
+							removed modifier
+						">public&nbsp;</span><span class="
+							removed modifier
+						"></span><span class="
+							removed modifier
+						"></span><span class="
+							removed modifier
+						"></span></td><td><span class="
+						removed method_return_type
+					">jdk.net.SocketFlow$Status[]</span></td><td>values()
+				</td><td>n.a.</td><td>
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <td>Change</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>METHOD_REMOVED</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td><td>
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <td>Old file</td><td>New file</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>77</td><td>n.a.</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
