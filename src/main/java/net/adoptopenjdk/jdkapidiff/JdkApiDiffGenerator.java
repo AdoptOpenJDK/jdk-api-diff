@@ -1,5 +1,5 @@
-/**
- *  Copyright 2017-2020 AdoptOpenJDK contributors (https://adoptopenjdk.net/);
+/*
+ *  Copyright 2017-2021 AdoptOpenJDK contributors (https://adoptopenjdk.net/);
  *  See the copyright.txt file in the distribution for a full listing of all
  *  contributors.
  *
@@ -172,8 +172,8 @@ public class JdkApiDiffGenerator {
         try ( Stream<String> stream = Files.lines( outputFile ) ) {
             stream.forEach( l -> {
                 writer.write( l.replaceAll( "\\s+$", "" )
-                        .replaceAll( oldJdk.getMergedJarPath().toString(), "JDK " + oldJdk.getVersion() )
-                        .replaceAll( newJdk.getMergedJarPath().toString(), "JDK " + newJdk.getVersion() ) +
+                        .replace( oldJdk.getMergedJarPath().toString(), "JDK " + oldJdk.getVersion() )
+                        .replace( newJdk.getMergedJarPath().toString(), "JDK " + newJdk.getVersion() ) +
                         System.lineSeparator()
                 );
             } );

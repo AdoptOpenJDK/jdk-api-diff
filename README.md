@@ -8,13 +8,28 @@ You can use this tool for instance to compare OpenJDK 9 and OpenJDK 10, OpenJDK 
 
 Example reports created by this generator can be found in the _docs_ directory:
 
+### N => N+1
+
+* API comparison of OpenJDK 8u301 and OpenJDK 9.4.0: [jdk8-jdk9-api-diff.html](https://gunnarmorling.github.io/jdk-api-diff/jdk8-jdk9-api-diff.html)
 * API comparison of OpenJDK 9.0.4 and OpenJDK 10-b46: [jdk9-jdk10-api-diff.html](https://gunnarmorling.github.io/jdk-api-diff/jdk9-jdk10-api-diff.html)
 * API comparison of OpenJDK 10.0.2 and OpenJDK 11+28: [jdk10-jdk11-api-diff.html](https://gunnarmorling.github.io/jdk-api-diff/jdk10-jdk11-api-diff.html)
-(it's 15 MB, so loading may take a bit)
 * API comparison of OpenJDK 11.0.1+13 and OpenJDK 12-ea+27: [jdk11-jdk12-api-diff.html](https://gunnarmorling.github.io/jdk-api-diff/jdk11-jdk12-api-diff.html)
 * API comparison of OpenJDK 12.0.1 and OpenJDK 13-ea+25: [jdk12-jdk13-api-diff.html](https://gunnarmorling.github.io/jdk-api-diff/jdk12-jdk13-api-diff.html)
 * API comparison of OpenJDK 13.0.2 and OpenJDK 14.0.1: [jdk13-jdk14-api-diff.html](https://gunnarmorling.github.io/jdk-api-diff/jdk13-jdk14-api-diff.html)
 * API comparison of OpenJDK 14.0.1 and OpenJDK 15-ea+27: [jdk14-jdk15-api-diff.html](https://gunnarmorling.github.io/jdk-api-diff/jdk14-jdk15-api-diff.html)
+* API comparison of OpenJDK 15.0.2 and OpenJDK 16.0.1: [jdk15-jdk16-api-diff.html](https://gunnarmorling.github.io/jdk-api-diff/jdk15-jdk16-api-diff.html)
+* API comparison of OpenJDK 16.0.1 and OpenJDK 17+35: [jdk16-jdk17-api-diff.html](https://gunnarmorling.github.io/jdk-api-diff/jdk16-jdk17-api-diff.html)
+
+### LTS => LTS+1
+
+* API comparison of OpenJDK 8u301 and OpenJDK 11.0.11: [jdk8-jdk11-api-diff.html](https://gunnarmorling.github.io/jdk-api-diff/jdk8-jdk11-api-diff.html)
+* API comparison of OpenJDK 11.0.11 and OpenJDK 17+35: [jdk11-jdk17-api-diff.html](https://gunnarmorling.github.io/jdk-api-diff/jdk11-jdk17-api-diff.html)
+
+### LTS => LTS+2
+
+* API comparison of OpenJDK 8u301 and OpenJDK 17+35: [jdk8-jdk17-api-diff.html](https://gunnarmorling.github.io/jdk-api-diff/jdk8-jdk17-api-diff.html)
+
+Some of them are huge, so loading may take a bit.
 
 ## Usage
 
