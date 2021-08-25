@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 
-     Copyright 2017-2020 AdoptOpenJDK contributors (https://adoptopenjdk.net/);
+     Copyright 2017-2021 AdoptOpenJDK contributors (https://adoptopenjdk.net/);
      See the copyright.txt file in the distribution for a full listing of all
      contributors.
 
@@ -74,7 +74,7 @@
                 <plugin>
                     <groupId>com.mycila</groupId>
                     <artifactId>license-maven-plugin</artifactId>
-                    <version>3.0</version>
+                    <version>4.1</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -83,7 +83,7 @@
                         <source>9</source>
                         <target>9</target>
                     </configuration>
-                    <version>3.6.2</version>
+                    <version>3.8.1</version>
                 </plugin>
                 <plugin>
                     <groupId>org.codehaus.gmaven</groupId>
@@ -93,7 +93,7 @@
                         <dependency>
                             <groupId>org.codehaus.groovy</groupId>
                             <artifactId>groovy-all</artifactId>
-                            <version>2.4.12</version>
+                            <version>2.4.21</version>
                         </dependency>
                     </dependencies>
                 </plugin>
@@ -104,12 +104,15 @@
                 <groupId>com.mycila</groupId>
                 <artifactId>license-maven-plugin</artifactId>
                 <configuration>
-                    <header>${basedir}/LICENSE.txt</header>
-                    <strictCheck>true</strictCheck>
-                    <excludes>
-                        <exclude>copyright.txt</exclude>
-                        <exclude>docs/**</exclude>
-                    </excludes>
+                    <licenseSets>
+                        <licenseSet>
+                            <header>${basedir}/LICENSE.txt</header>
+                            <excludes>
+                                <exclude>copyright.txt</exclude>
+                                <exclude>docs/**</exclude>
+                            </excludes>
+                        </licenseSet>
+                    </licenseSets>
                 </configuration>
                 <executions>
                     <execution>
@@ -126,7 +129,7 @@
                     <dependency>
                         <groupId>org.codehaus.groovy</groupId>
                         <artifactId>groovy-all</artifactId>
-                        <version>3.0.3</version>
+                        <version>3.0.8</version>
                         <type>pom</type>
                     </dependency>
                 </dependencies>
@@ -145,7 +148,7 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
-                <version>1.6.0</version>
+                <version>3.0.0</version>
                 <executions>
                     <execution>
                         <phase>verify</phase>
@@ -155,7 +158,7 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <executable>java</executable>
+                    <executable>${JAVA_HOME}/bin/java</executable>
                     <arguments>
                         <argument>-Xdebug</argument>
                         <argument>-Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=8000</argument>
@@ -174,7 +177,7 @@
                         <argument>--exported-packages-only</argument>
                         <argument>true</argument>
 <!--                         <argument>-#-excluded-packages</argument> -->
-<!--                         <argument>apple,com.apple,com.oracle,com.sun,oracle,sun,jdk.management.cmm,jdk.management.jfr,jdk.management.resource</argument> -->
+<!--                         <argument>apple,com.apple,com.oracle,com.sun,oracle,sun,jdk.dynalink.internal,jdk.internal,jdk.incubator.http.internal,jdk.javadoc.internal,jdk.management.cmm,jdk.management.jfr,jdk.management.resource,jdk.nashorn.internal,jdk.tools.jlink.internal,jdk.xml.internal,org.jcp.xml.dsig.internal</argument>-->
                     </arguments>
                 </configuration>
             </plugin>
@@ -185,12 +188,22 @@
         <dependency>
             <groupId>com.github.siom79.japicmp</groupId>
             <artifactId>japicmp</artifactId>
-            <version>0.11.0</version>
+            <version>0.15.3</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>javax.activation</groupId>
+                    <artifactId>activation</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>javax.xml.bind</groupId>
+                    <artifactId>jaxb-api</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>com.beust</groupId>
             <artifactId>jcommander</artifactId>
-            <version>1.78</version>
+            <version>1.81</version>
         </dependency>
         <dependency>
             <groupId>jakarta.xml.bind</groupId>
@@ -202,12 +215,6 @@
             <artifactId>jaxb-impl</artifactId>
             <version>2.3.3</version>
             <scope>runtime</scope>
-        </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.13.1</version>
-            <scope>test</scope>
         </dependency>
     </dependencies>
 </project>

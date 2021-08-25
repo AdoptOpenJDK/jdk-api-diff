@@ -1,5 +1,5 @@
-/**
- *  Copyright 2017-2020 AdoptOpenJDK contributors (https://adoptopenjdk.net/);
+/*
+ *  Copyright 2017-2021 AdoptOpenJDK contributors (https://adoptopenjdk.net/);
  *  See the copyright.txt file in the distribution for a full listing of all
  *  contributors.
  *
@@ -17,6 +17,7 @@
  */
 module net.adoptopenjdk.jdkapidiff {
     requires jcommander;
+    requires japicmp;
     exports net.adoptopenjdk.jdkapidiff;
     opens net.adoptopenjdk.jdkapidiff to jcommander;
 }
