@@ -19,6 +19,7 @@ Example reports created by this generator can be found in the _docs_ directory:
 * API comparison of OpenJDK 14.0.1 and OpenJDK 15-ea+27: [jdk14-jdk15-api-diff.html](https://gunnarmorling.github.io/jdk-api-diff/jdk14-jdk15-api-diff.html)
 * API comparison of OpenJDK 15.0.2 and OpenJDK 16.0.1: [jdk15-jdk16-api-diff.html](https://gunnarmorling.github.io/jdk-api-diff/jdk15-jdk16-api-diff.html)
 * API comparison of OpenJDK 16.0.1 and OpenJDK 17+35: [jdk16-jdk17-api-diff.html](https://gunnarmorling.github.io/jdk-api-diff/jdk16-jdk17-api-diff.html)
+* API comparison of OpenJDK 17.0.0 and OpenJDK 18-ea+18-1093 [jdk17-jdk18-api-diff.html](https://gunnarmorling.github.io/jdk-api-diff/jdk17-jdk18-api-diff.html)
 
 ### LTS => LTS+1
 
