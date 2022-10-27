@@ -64,8 +64,8 @@
                 </configuration>
             </toolchain>
          -->
-        <jdk1>version=14,vendor=openjdk</jdk1>
-        <jdk2>version=15,vendor=openjdk</jdk2>
+        <jdk1>version=18,vendor=openjdk</jdk1>
+        <jdk2>version=19,vendor=openjdk</jdk2>
     </properties>
 
     <build>
@@ -91,9 +91,9 @@
                     <version>2.1.1</version>
                     <dependencies>
                         <dependency>
-                            <groupId>org.codehaus.groovy</groupId>
+                            <groupId>org.apache.groovy</groupId>
                             <artifactId>groovy</artifactId>
-                            <version>3.0.9</version>
+                            <version>4.0.6</version>
                         </dependency>
                     </dependencies>
                 </plugin>
@@ -127,9 +127,9 @@
                 <artifactId>groovy-maven-plugin</artifactId>
                 <dependencies>
                     <dependency>
-                        <groupId>org.codehaus.groovy</groupId>
-                        <artifactId>groovy-all</artifactId>
-                        <version>3.0.8</version>
+                        <groupId>org.apache.groovy</groupId>
+                        <artifactId>groovy-bom</artifactId>
+                        <version>4.0.6</version>
                         <type>pom</type>
                     </dependency>
                 </dependencies>
