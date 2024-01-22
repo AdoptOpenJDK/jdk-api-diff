@@ -37,6 +37,11 @@ Some of them are huge, so loading may take a bit.
 To create reports yourself, e.g. with different settings, run `mvn clean install`.
 The API change report can be found at _target/jdk-api-diff.html_.
 
+### Using Docker
+
+To create a report yourself using Docker, pick valid SDKMAN java tags and pass them as JDK1 and JDK2 build-args: 
+`./compare.sh 11.0.5-open 12.0.2-open`
+
 [Maven Toolchains](https://maven.apache.org/guides/mini/guide-using-toolchains.html) are used to locate the JDKs to compare.
 There must be a toolchain entry of type `jdk` for each JDK to compare.
 Provide a file _~.m2/toolchains.xml_ like this:

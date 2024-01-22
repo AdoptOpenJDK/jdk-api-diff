@@ -1,0 +1,15 @@
+name: Build
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        jdk1: [ '11.0.5-open' ]
+        jdk2: [ '12.0.2-open', '13.0.1-open' ]
+    name: Compare ${{ matrix.jdk1 }} with ${{ matrix.jdk2 }}
+    steps:
+      - uses: actions/checkout@v1
+      - name: Build
+        run: ./compare.sh ${{ matrix.jdk1 }} ${{ matrix.jdk2 }} && [ -f jdk-api-diff.html ]
