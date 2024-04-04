@@ -1,3 +1,9 @@
+**RETIRED**
+
+Please note this project has been retired in favour of [https://javaalmanac.io/jdk/21/](https://javaalmanac.io/jdk/21/)
+
+-------
+
 # JDK API Diff Report Generator
 
 This project creates a report of all API changes between two different JDK versions,
