@@ -1,6 +1,6 @@
-**RETIRED**
+# WARN - PROJECT IS RETIRED
 
-Please note this project has been retired in favour of [https://javaalmanac.io/jdk/21/](https://javaalmanac.io/jdk/21/)
+Please note this project has been retired in favour of [https://javaalmanac.io/jdk/21/](https://javaalmanac.io/jdk/21/).
 
 -------
 
